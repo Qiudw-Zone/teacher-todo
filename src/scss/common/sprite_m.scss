@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+@function px2rem ($px,$designWidth) {
+	$ppr: $designWidth / 10 / 1rem;
+	
+    @if (type-of($px) == "number") {
+        @return $px / $ppr;
+    }
+
+    @if (type-of($px) == "list") {
+        @if (nth($px, 1) == 0 and nth($px, 2) != 0) {
+            @return 0 nth($px, 2) / $ppr;
+        } @else if (nth($px, 1) == 0 and nth($px, 2) == 0)  {
+            @return 0 0;
+        } @else if (nth($px, 1) != 0 and nth($px, 2) == 0) {
+            @return nth($px, 1) / $ppr 0;
+        } @else {
+            @return nth($px, 1) / $ppr nth($px, 2) / $ppr;
+        }
+    }
+}
+@mixin sprite-info ($sprite, $name,$flag) {
+	@warn $sprite;
+    width: image-width(sprite-file($sprite, $name));
+    height:image-height(sprite-file($sprite, $name));
+    @if ($flag){
+    	background-image: sprite-url($sprite);
+    	background-repeat: no-repeat;
+    }
+    background-position: sprite-position($sprite, $name);
+}
+@mixin sprite-info-m ($sprite, $name,$spriteWidth,$spriteHeight,$designWidth,$flag) {
+	@warn $sprite;
+    width: px2rem(image-width(sprite-file($sprite, $name)),$designWidth);
+    height: px2rem(image-height(sprite-file($sprite, $name)),$designWidth);
+    @if ($flag){
+    	background-image: sprite-url($sprite);
+    	background-repeat: no-repeat;
+    }
+    background-position: px2rem(sprite-position($sprite, $name),$designWidth);
+    background-size: px2rem(($spriteWidth, $spriteHeight),$designWidth);
+}

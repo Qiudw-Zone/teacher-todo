@@ -1,0 +1,306 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+@-webkit-keyframes ml-0 {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+
+@keyframes ml-0 {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+@-webkit-keyframes ml-1 {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -100%;
+  }
+}
+@keyframes ml-1 {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -100%;
+  }
+}
+@-webkit-keyframes ml-2 {
+  0% {
+    margin-left: -100%;
+  }
+  100% {
+    margin-left: -200%;
+  }
+}
+@keyframes ml-2 {
+  0% {
+    margin-left: -100%;
+  }
+  100% {
+    margin-left: -200%;
+  }
+}
+@-webkit-keyframes ml-3 {
+  0% {
+    margin-left: -200%;
+  }
+  100% {
+    margin-left: -300%;
+  }
+}
+@keyframes ml-3 {
+  0% {
+    margin-left: -200%;
+  }
+  100% {
+    margin-left: -300%;
+  }
+}
+@-webkit-keyframes ml-4 {
+  0% {
+    margin-left: -300%;
+  }
+  100% {
+    margin-left: -400%;
+  }
+}
+@keyframes ml-4 {
+  0% {
+    margin-left: -300%;
+  }
+  100% {
+    margin-left: -400%;
+  }
+}
+.ml-zero {
+  -webkit-animation: ml-0 1s ease-out;
+  animation: ml-0 1s ease-out;
+}
+
+.ml-one {
+  -webkit-animation: ml-1 1s ease-out;
+  animation: ml-1 1s ease-out;
+}
+
+.ml-two {
+  -webkit-animation: ml-2 1s ease-out;
+  animation: ml-2 1s ease-out;
+}
+
+.ml-three {
+  -webkit-animation: ml-3 1s ease-out;
+  animation: ml-3 1s ease-out;
+}
+
+.ml-fouth {
+  -webkit-animation: ml-4 1s ease-out;
+  animation: ml-4 1s ease-out;
+}
+
+body {
+  font-family: 'Microsoft Yahei';
+  font-size: 12px;
+}
+
+.fl {
+  float: left;
+}
+
+.tac {
+  text-align: center;
+}
+
+.expand-one {
+  background: url(/login-demo/dist/img/bg-one.jpg);
+  background-size: cover;
+}
+
+.expand-two {
+  background: url(/login-demo/dist/img/bg-two.jpg);
+  background-size: cover;
+}
+
+.expand-three {
+  background: url(/login-demo/dist/img/bg-three.jpg);
+  background-size: cover;
+}
+
+.expand-four {
+  background: url(/login-demo/dist/img/bg-four.jpg);
+  background-size: cover;
+}
+
+.expand-five {
+  background: url(/login-demo/dist/img/bg-five.jpg);
+  background-size: cover;
+}
+
+.expand-zone {
+  position: relative;
+  width: 100%;
+  background-color: #333d4d;
+  overflow: hidden;
+}
+.expand-zone .expand-wrap {
+  width: 500%;
+  height: 100%;
+  /*有五个子扩展菜单*/
+}
+.expand-zone .expand-list {
+  float: left;
+  width: 20%;
+  height: 100%;
+  color: #fff;
+}
+
+.form-control-feedback {
+  top: 25px !important;
+}
+
+.wraper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 520px;
+  margin-left: -400px;
+  margin-top: -300px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0);
+}
+.wraper .phone {
+  width: 300px;
+  height: 100%;
+  margin-right: 50px;
+  background: url(/login-demo/dist/img/iphone.png);
+  background-size: 100%;
+}
+.wraper .form-wrap {
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  padding: 10px 30px;
+  border-radius: 8px;
+  background: #F5F5F5;
+  box-shadow: rgba(0, 0, 255, 0.4) 0 0 25px, rgba(0, 128, 0, 0.2) 0 0 3px 1px inset;
+}
+.wraper .head-wrap {
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px dashed #DADADA;
+  margin-bottom: 20px;
+}
+.wraper .form-head {
+  width: 200px;
+  height: 100%;
+  margin: 0 auto;
+  font-size: 0;
+}
+.wraper .form-head .icon {
+  position: relative;
+  top: 5px;
+  display: inline-block;
+  width: 29px;
+  height: 28px;
+  margin-right: 15px;
+  background: url(/login-demo/dist/img/pen.png);
+}
+.wraper .form-head .title {
+  display: inline-block;
+  width: auto;
+  height: 35px;
+  line-height: 35px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #aaa;
+}
+.wraper .form-head .red-title {
+  margin-left: 10px;
+  color: #EB4040;
+}
+.wraper .form-group {
+  margin-bottom: 10px;
+}
+.wraper .form-group .control-label {
+  display: block;
+  padding: 8px 0;
+}
+.wraper .form-group .form-control-wrap {
+  width: 100%;
+  height: 30px;
+}
+.wraper .form-group .form-control {
+  width: 100%;
+  height: 100%;
+  line-height: 30px;
+  outline: none;
+}
+.wraper .form-group .submit-btn {
+  width: 180px;
+  height: 40px;
+  line-height: 40px;
+  background-image: -webkit-linear-gradient(top, #f5751e, #cf3d0d, #f5751e);
+  background-image: linear-gradient(to bottom, #f5751e, #cf3d0d, #f5751e);
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
+.wraper .form-group .submit-btn:hover {
+  background-image: -webkit-linear-gradient(top, #cf3d0d, #f5751e, #cf3d0d);
+  background-image: linear-gradient(to bottom, #cf3d0d, #f5751e, #cf3d0d);
+}

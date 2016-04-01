@@ -1,0 +1,202 @@
+@charset "utf-8";
+@import "compass/reset";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+// @import "compass/css3/animation";
+
+
+@mixin size($width,$height){
+    width:$width;
+    height:$height;
+}
+
+@mixin animate($str){
+    -webkit-animation:$str;
+    -moz-animation:$str;
+    -ms-animation:$str;
+            animation:$str;
+}
+@mixin keyframe($name){
+    @keyframes #{$name}{
+        @content;
+    }
+}
+
+// $mlvalue:0,-100,-200,-300,-400;
+@include keyframe(ml-0){
+    0% {
+        margin-left: 0;}
+
+    100% {
+        margin-left:0;}
+}
+@include keyframe(ml-1){
+    0% {
+        margin-left: 0;}
+
+    100% {
+        margin-left:-100%;}
+}
+@include keyframe(ml-2){
+    0% {
+        margin-left: -100%;}
+    
+    100% {
+        margin-left:-200%;}
+}
+@include keyframe(ml-3){
+    0% {
+        margin-left: -200%;}
+    100% {
+        margin-left:-300%;}
+}
+@include keyframe(ml-4){
+    0% {
+        margin-left: -300%;}
+    100% {
+        margin-left:-400%;}
+}
+.ml-zero{
+    @include animate(ml-0 1s ease-out);
+}
+.ml-one{
+    @include animate(ml-1 1s ease-out);
+}
+.ml-two{
+    @include animate(ml-2 1s ease-out);
+}
+.ml-three{
+    @include animate(ml-3 1s ease-out);
+}
+.ml-fouth{
+    @include animate(ml-4 1s ease-out);
+}
+
+body{
+    font-family: 'Microsoft Yahei';
+    font-size: 12px;
+}
+
+.fl{
+    float: left;
+}
+.tac{
+    text-align: center;
+}
+
+$bg:one,two,three,four,five;
+@each $bg-item in $bg{
+    .expand-#{$bg-item}{
+        background: url(/login-demo/dist/img/bg-#{$bg-item}.jpg);
+        background-size:cover;
+    }
+}
+
+.expand-zone{
+    position: relative;
+    width:100%;
+    background-color: #333d4d;
+    overflow: hidden;
+    .expand-wrap{
+        @include size(500%,100%); /*有五个子扩展菜单*/
+    }
+    .expand-list{
+        float:left;
+        @include size(20%,100%);
+        color:#fff;
+        // background:#ace;
+    }
+}
+
+.form-control-feedback{
+    top:25px !important;
+}
+.wraper{
+    position:fixed;
+    top:50%;
+    left:50%;
+    @include size(800px,520px);
+    margin:{
+        left:-400px;
+        top:-300px;
+    }
+    padding:10px;
+    background:rgba(255,255,255,0);
+
+    .phone{
+        @include size(300px,100%);
+        margin-right:50px;
+        background:url(/login-demo/dist/img/iphone.png);
+        background-size:100%;
+    }
+    .form-wrap{
+        overflow: hidden;
+        @include size(auto,auto);
+        padding:10px 30px;
+        @include border-radius(8px);
+        background:#F5F5F5;
+        @include box-shadow(rgba(blue, 0.4) 0 0 25px, rgba(green, 0.2) 0 0 3px 1px inset);
+    }
+    .head-wrap{
+        @include size(100%,50px);
+        border-bottom: 2px dashed #DADADA;
+        margin-bottom: 20px;
+    }
+    .form-head{
+        @include size(200px,100%);
+        margin:0 auto;
+        font-size: 0;
+        .icon{
+            position:relative;
+            top:5px;
+            display: inline-block;
+            @include size(29px,28px);
+            margin-right:15px;
+            background:url(/login-demo/dist/img/pen.png);
+        }
+        .title{
+            display: inline-block;
+            @include size(auto,35px);
+            line-height: 35px;
+            font-size: 18px;
+            font-weight: bold;
+            color:#aaa;
+        }
+        .red-title{
+            margin-left: 10px;
+            color:#EB4040;
+        }
+    }
+
+    .form-group{
+        margin:{
+            bottom:10px;
+        }
+        .control-label{
+            display: block;
+            padding:8px 0;
+        }
+        .form-control-wrap{
+            @include size(100%,30px);
+        }
+        .form-control{
+            @include size(100%,100%);
+            line-height: 30px;
+            outline: none;
+        }
+        .submit-btn{
+            @include size(180px,40px);
+            line-height: 40px;
+            background-image:linear-gradient(to bottom,rgb(245,117,30),rgb(207,61,13),rgb(245,117,30));
+            @include border-radius(5px);
+            font-size: 18px;
+            font-weight: bold;
+            color:#fff;
+            cursor: pointer;
+            border:none;
+            &:hover{
+                background-image:linear-gradient(to bottom,rgb(207,61,13),rgb(245,117,30),rgb(207,61,13));
+            }
+        }
+    }
+}

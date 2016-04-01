@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login-demo</title>
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/css/main.css">
+</head>
+<body>
+    <div id="id-expand-zone" class="expand-zone">
+        <div id="id-expand-wrap" class="expand-wrap">
+            <div class="expand-list expand-one">
+            </div>
+            <div class="expand-list expand-two">
+            </div>
+            <div class="expand-list expand-three">
+            </div>
+            <div class="expand-list expand-four">
+            </div>
+            <div class="expand-list expand-five">
+            </div>
+        </div>
+    </div>
+    <div class="wraper">
+        <div class="fl phone"></div>
+        <div class="form-wrap">
+            <div class="head-wrap">
+                <div class="form-head">
+                    <i class="icon"></i>
+                    <p class="title">快来注册吧<span class="red-title">iAPP</span></p>
+                </div>
+            </div>
+            
+            <form id="login-form" action="login.php" method="POST" class="form-body">
+                <div class="form-group">
+                    <label class="control-label">用户名</label>
+                    <div class="form-control-wrap">
+                        <input type="text" name="username" class="form-control" placeholder="enter username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">密码</label>
+                    <div class="form-control-wrap">
+                        <input type="password" name="password" class="form-control" placeholder="enter password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">确认密码</label>
+                    <div class="form-control-wrap">
+                        <input type="password" name="comfirm_password" class="form-control" placeholder="comfirm  password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">邮箱</label>
+                    <div class="form-control-wrap">
+                        <input type="text" name="email" class="form-control" placeholder="comfirm  password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">出生日期</label>
+                    <div class="form-control-wrap">
+                        <input type="date" name="born-date" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group tac">
+                    <button  type="submit" id="id-submit" name="submit-form" class="submit-btn">提&nbsp;&nbsp;&nbsp;交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+    var require = {
+        baseUrl: 'http://gulpapps.com/login-demo/',
+        urlArgs: 'v=1.0.0',
+        waitSeconds: 0,
+        paths: {
+            jquery: 'http://gulpapps.com/login-demo/dist/js/common/jquery-1.11.1.min',
+            'bootstrap-validator': 'http://gulpapps.com/login-demo/dist/js/common/bootstrapValidator.min'
+        }
+    };
+    </script>
+    <script src="dist/js/common/require.min.js" data-main="dist/js/main"></script>
+</body>
+</html>
