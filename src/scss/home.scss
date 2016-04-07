@@ -55,7 +55,7 @@ body{
 .home-head{
     @include size(100%,60px);
     @include bg(#19AA67);
-    @include box-shadow(5px 5px #088D53);
+    @include box-shadow(0px 5px #088D53);
     .head-wrap{
         height: 100%;
         font-size: 0px;
@@ -115,4 +115,27 @@ body{
             background: #f5f5f5;
         }
     }
+}
+.home-body{
+    @include size(100%,100%);
+    margin-top:5px;
+    .home-nav{
+        float: left;
+        @include size(260px,auto);
+        height: 300px;
+        @include bg(#B0DBC2);
+    }
+    .list-wrap{
+        overflow: hidden;
+        min-height: 600px;
+        border-left:3px solid #088D53;
+    }
+}
+.home-foot{
+    @include size(100%,60px);
+    @include bg(#088D53);
+    line-height: 60px;
+    font-size: 16px;
+    color:#fff;
+    text-align: center;
 }
