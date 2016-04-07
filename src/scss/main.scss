@@ -2,12 +2,27 @@
 @import "compass/reset";
 @import "compass/css3/border-radius";
 @import "compass/css3/box-shadow";
-// @import "compass/css3/animation";
+
+$icon-spacing: 5px;
+$icon-layout: "vertical";
+@import "icon/*.png";
+@include all-icon-sprites;
 
 
 @mixin size($width,$height){
     width:$width;
     height:$height;
+}
+@mixin bg($url){
+    background: $url;
+}
+@mixin bg-100($url){
+    background: $url;
+    background-size:100%;
+}
+@mixin bg-cover($url){
+    background: $url;
+    background-size:cover;
 }
 
 @mixin animate($str){
@@ -22,59 +37,12 @@
     }
 }
 
-// $mlvalue:0,-100,-200,-300,-400;
-@include keyframe(ml-0){
-    0% {
-        margin-left: 0;}
-
-    100% {
-        margin-left:0;}
-}
-@include keyframe(ml-1){
-    0% {
-        margin-left: 0;}
-
-    100% {
-        margin-left:-100%;}
-}
-@include keyframe(ml-2){
-    0% {
-        margin-left: -100%;}
-    
-    100% {
-        margin-left:-200%;}
-}
-@include keyframe(ml-3){
-    0% {
-        margin-left: -200%;}
-    100% {
-        margin-left:-300%;}
-}
-@include keyframe(ml-4){
-    0% {
-        margin-left: -300%;}
-    100% {
-        margin-left:-400%;}
-}
-.ml-zero{
-    @include animate(ml-0 1s ease-out);
-}
-.ml-one{
-    @include animate(ml-1 1s ease-out);
-}
-.ml-two{
-    @include animate(ml-2 1s ease-out);
-}
-.ml-three{
-    @include animate(ml-3 1s ease-out);
-}
-.ml-fouth{
-    @include animate(ml-4 1s ease-out);
-}
-
+html{ height:100%; }
 body{
+    height:100%;
     font-family: 'Microsoft Yahei';
     font-size: 12px;
+    @include bg(url(../img/index-bg.jpg) repeat-y);
 }
 
 .fl{
@@ -83,120 +51,55 @@ body{
 .tac{
     text-align: center;
 }
-
-$bg:one,two,three,four,five;
-@each $bg-item in $bg{
-    .expand-#{$bg-item}{
-        background: url(/login-demo/dist/img/bg-#{$bg-item}.jpg);
-        background-size:cover;
-    }
+.off{
+    display: none !important;
 }
 
-.expand-zone{
-    position: relative;
-    width:100%;
-    background-color: #333d4d;
-    overflow: hidden;
-    .expand-wrap{
-        @include size(500%,100%); /*有五个子扩展菜单*/
-    }
-    .expand-list{
-        float:left;
-        @include size(20%,100%);
-        color:#fff;
-        // background:#ace;
-    }
-}
-
-.form-control-feedback{
-    top:25px !important;
-}
 .wraper{
+    @include size(100%,100%);
+    @include bg(rgba(25,161,95,.3));
+}
+.index-container{
     position:fixed;
     top:50%;
-    left:50%;
-    @include size(800px,520px);
-    margin:{
-        left:-400px;
-        top:-300px;
-    }
-    padding:10px;
-    background:rgba(255,255,255,0);
-
-    .phone{
-        @include size(300px,100%);
-        margin-right:50px;
-        background:url(/login-demo/dist/img/iphone.png);
-        background-size:100%;
-    }
-    .form-wrap{
-        overflow: hidden;
-        @include size(auto,auto);
-        padding:10px 30px;
-        @include border-radius(8px);
-        background:#F5F5F5;
-        @include box-shadow(rgba(blue, 0.4) 0 0 25px, rgba(green, 0.2) 0 0 3px 1px inset);
-    }
-    .head-wrap{
-        @include size(100%,50px);
-        border-bottom: 2px dashed #DADADA;
-        margin-bottom: 20px;
-    }
+    left: 50%;
+    padding:15px;
+    margin-left:-307px;
+    transform: translateY(-50%);
+    @include size(600px, auto);
+    @include bg(#fff);
+    // @include bg(rgba(25,161,95,.7));
+    @include border-radius(10px);
+    color:#666;
     .form-head{
-        @include size(200px,100%);
-        margin:0 auto;
+        @include size(270px,auto);
+        margin:15px auto 0;
         font-size: 0;
-        .icon{
-            position:relative;
-            top:5px;
+        font-weight: bold;
+        text-align: center;
+        .logo{
             display: inline-block;
-            @include size(29px,28px);
-            margin-right:15px;
-            background:url(/login-demo/dist/img/pen.png);
+            @include size(48px,48px);
         }
         .title{
             display: inline-block;
-            @include size(auto,35px);
-            line-height: 35px;
-            font-size: 18px;
-            font-weight: bold;
-            color:#aaa;
-        }
-        .red-title{
-            margin-left: 10px;
-            color:#EB4040;
+            position: relative;
+            @include size(auto,48px);
+            margin: 0 15px;
+            line-height: 48px;
+            top: -15px;
+            font-size: 24px;
         }
     }
-
+    .form-nav{
+        padding:15px;
+        text-align: right;
+        border-top:2px dashed #fff;
+    }
     .form-group{
-        margin:{
-            bottom:10px;
-        }
+        font-size: 16px;
         .control-label{
-            display: block;
-            padding:8px 0;
-        }
-        .form-control-wrap{
-            @include size(100%,30px);
-        }
-        .form-control{
-            @include size(100%,100%);
-            line-height: 30px;
-            outline: none;
-        }
-        .submit-btn{
-            @include size(180px,40px);
-            line-height: 40px;
-            background-image:linear-gradient(to bottom,rgb(245,117,30),rgb(207,61,13),rgb(245,117,30));
-            @include border-radius(5px);
-            font-size: 18px;
             font-weight: bold;
-            color:#fff;
-            cursor: pointer;
-            border:none;
-            &:hover{
-                background-image:linear-gradient(to bottom,rgb(207,61,13),rgb(245,117,30),rgb(207,61,13));
-            }
         }
     }
 }

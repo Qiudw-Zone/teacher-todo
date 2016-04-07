@@ -1,0 +1,1 @@
+require(["jquery","bootstrap-validator"],function(o){o(function(){console.log(11)})});

@@ -1,0 +1,118 @@
+@charset "utf-8";
+@import "compass/reset";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+
+$icon-spacing: 5px;
+$icon-layout: "vertical";
+@import "icon/*.png";
+@include all-icon-sprites;
+
+
+@mixin size($width,$height){
+    width:$width;
+    height:$height;
+}
+@mixin bg($url){
+    background: $url;
+}
+@mixin bg-100($url){
+    background: $url;
+    background-size:100%;
+}
+@mixin bg-cover($url){
+    background: $url;
+    background-size:cover;
+}
+
+@mixin animate($str){
+    -webkit-animation:$str;
+    -moz-animation:$str;
+    -ms-animation:$str;
+            animation:$str;
+}
+@mixin keyframe($name){
+    @keyframes #{$name}{
+        @content;
+    }
+}
+
+body{
+    font-family: 'Microsoft Yahei';
+    font-size: 12px;
+    @include bg(#fff);
+}
+
+.fl{
+    float: left;
+}
+.tac{
+    text-align: center;
+}
+.off{
+    display: none !important;
+}
+.home-head{
+    @include size(100%,60px);
+    @include bg(#19AA67);
+    @include box-shadow(5px 5px #088D53);
+    .head-wrap{
+        height: 100%;
+        font-size: 0px;
+    }
+    .user{
+        display: inline-block;
+        position: relative;
+        @include size(32px,32px);
+        margin:0 10px;
+        top:9px;
+        cursor: pointer;
+    }
+    .logout{
+        display: inline-block;
+        padding:0 10px;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 60px;
+        color:#fff;
+    }
+    .create-course{
+        height: 100%;
+        text-align: right;
+        line-height: 60px;
+        .create{
+            display: inline-block;
+            position:relative;
+            @include size(32px,32px);
+            margin: 0 10px;
+            top:10px;
+            cursor: pointer;
+        }
+        .create-course-text{
+            font-size: 18px;
+            color:#e5e5e5;
+            cursor: pointer;
+        }
+    }
+    .search{
+        height:100%;
+        .search-label{
+            display: inline-block;
+            position: relative;
+            margin: 0 10px;
+            top: 15px;
+            left:50px;
+            @include size(32px,32px);
+        }
+        .search-input{
+            position: relative;
+            top:4px;
+            @include size(200px,35px);
+            padding:5px 10px 5px 50px;
+            border:1px solid #ddd;
+            font-size: 16px;
+            @include border-radius(5px);
+            background: #f5f5f5;
+        }
+    }
+}

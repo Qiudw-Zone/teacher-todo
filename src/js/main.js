@@ -1,43 +1,6 @@
 require(['jquery', 'bootstrap-validator'], function($) {
     $(function() {
-        var SCREEN_H = $(window).height();
-
-        var expandDom = $('#id-expand-zone');
-        var expandWrapDom = $('#id-expand-wrap');
-
-        expandDom.height(SCREEN_H);
-
-        if (window.requestAnimationFrame) {
-            var carousel = {
-                dur: 2000,
-                start: function() {
-                    var p = 0;
-                    var startTime = Date.now();
-                    var self = this;
-
-                    requestAnimationFrame(function f() {
-                        p = parseInt((Date.now() - startTime) / self.dur);
-
-                        if (p >= 5) {
-                            self.onFinished();
-                        } else {
-                            self.onProgress(p);
-                        }
-                        requestAnimationFrame(f);
-                    });
-                },
-                onProgress: function(p) {
-                    console.log(p)
-                },
-                onFinished: function() {
-                    this.start();
-                }
-            }
-
-            // carousel.start();
-        }
-
-        $('#login-form').bootstrapValidator({
+        $('#login,#reg').bootstrapValidator({
             message: 'This value is not valid',
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
@@ -82,54 +45,25 @@ require(['jquery', 'bootstrap-validator'], function($) {
                             message: '密码不一致'
                         }
                     }
-                },
-                email: {
-                    validators: {
-                        notEmpty: {
-                            message: '邮箱不能为空'
-                        },
-                        regexp: {
-                            message: '邮箱格式不合法',
-                            regexp: /^\w+@\w+\.[a-z]+$/
-                        }
-                    }
                 }
             }
+        }).on("success.form.bv", function(e) {
+            e.preventDefault();
+            console.log(111);
         });
 
-        /*setTimeout(function() {
-            expandDom.addClass('ml-one');
-        }, 1000);*/
-
-        var expandclass = {
-            0: 'ml-zero',
-            1: 'ml-one',
-            2: 'ml-two',
-            3: 'ml-three',
-            4: 'ml-fouth',
-        };
-        var expandml = {
-            0: 0,
-            1: '-100%',
-            2: '-200%',
-            3: '-300%',
-            4: '-400%'
-        }
-        var count = 1;
-        setInterval(function() {
-            if (count === 5) {
-                count = 0;
+        $(".index-container").on('click', '#form-nav-text', function(event) {
+            event.preventDefault();
+            var type = $(this).data("type");
+            if (type === "#reg") {
+                $("#login").addClass('off');
+                $(this).text("登陆").data("type", "#login");
+            } else {
+                $("#reg").addClass('off');
+                $(this).text("注册").data("type", "#reg");
             }
+            $(type).removeClass('off');
+        });
 
-            expandWrapDom.addClass(expandclass[count]);
-            setTimeout(function() {
-                expandWrapDom.css('margin-left', expandml[count]);
-                expandWrapDom.removeClass(expandclass[count]);
-                count++;
-            }, 1000);
-
-        }, 1300);
-
-        // $('#id-submit').click(function(event) {});
     });
 });
