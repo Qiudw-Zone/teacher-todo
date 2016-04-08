@@ -42,8 +42,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-.icon-sprite, .icon-plug-course, .icon-plug-todo, .icon-todo, .icon-user {
-  background-image: url('../img/icon-s0f91995290.png');
+.icon-sprite, .icon-plug-course, .icon-plug-task, .icon-plug-todo, .icon-search, .icon-todo, .icon-user {
+  background-image: url('../img/icon-sf5552ae41e.png');
   background-repeat: no-repeat;
 }
 
@@ -51,16 +51,24 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background-position: 0 0;
 }
 
-.icon-plug-todo {
+.icon-plug-task {
   background-position: 0 -37px;
 }
 
+.icon-plug-todo {
+  background-position: 0 -74px;
+}
+
+.icon-search {
+  background-position: 0 -143px;
+}
+
 .icon-todo {
-  background-position: 0 -106px;
+  background-position: 0 -179px;
 }
 
 .icon-user {
-  background-position: 0 -159px;
+  background-position: 0 -232px;
 }
 
 body {
@@ -110,21 +118,30 @@ body {
 }
 .home-head .create-course {
   height: 100%;
-  text-align: right;
-  line-height: 60px;
+}
+.home-head .create-course .create-wrap {
+  float: right;
+  width: 160px;
+  height: 40px;
+  padding: 0 10px;
+  margin-top: 10px;
+  background: #fff;
+  border-radius: 10px;
 }
 .home-head .create-course .create {
   display: inline-block;
   position: relative;
   width: 32px;
-  height: 32px;
-  margin: 0 10px;
-  top: 10px;
+  height: 33px;
+  margin-right: 10px;
+  top: 4px;
   cursor: pointer;
 }
 .home-head .create-course .create-course-text {
+  position: relative;
+  top: -4px;
   font-size: 18px;
-  color: #e5e5e5;
+  color: #666;
   cursor: pointer;
 }
 .home-head .search {
@@ -133,18 +150,19 @@ body {
 .home-head .search .search-label {
   display: inline-block;
   position: relative;
-  margin: 0 10px;
+  z-index: 3;
   top: 15px;
-  left: 50px;
+  left: 200px;
   width: 32px;
   height: 32px;
+  cursor: pointer;
 }
 .home-head .search .search-input {
   position: relative;
   top: 4px;
   width: 200px;
-  height: 35px;
-  padding: 5px 10px 5px 50px;
+  height: 40px;
+  padding: 5px 35px 5px 5px;
   border: 1px solid #ddd;
   font-size: 16px;
   border-radius: 5px;
@@ -158,10 +176,34 @@ body {
 }
 .home-body .home-nav {
   float: left;
-  width: 260px;
+  width: 200px;
   height: auto;
   height: 300px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
   background: #B0DBC2;
+}
+.home-body .home-nav .create-task {
+  margin: 20px auto;
+  width: 180px;
+  height: 50px;
+  line-height: 50px;
+  background: #00A99D;
+  font-size: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.home-body .home-nav .plug-task {
+  display: inline-block;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  margin-right: 15px;
+  top: 8px;
+}
+.home-body .home-nav .nav-text {
+  font-size: 18px;
 }
 .home-body .list-wrap {
   overflow: hidden;

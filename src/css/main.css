@@ -42,8 +42,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-.icon-sprite, .icon-plug-course, .icon-plug-todo, .icon-todo, .icon-user {
-  background-image: url('../img/icon-s0f91995290.png');
+.icon-sprite, .icon-plug-course, .icon-plug-task, .icon-plug-todo, .icon-search, .icon-todo, .icon-user {
+  background-image: url('../img/icon-sf5552ae41e.png');
   background-repeat: no-repeat;
 }
 
@@ -51,16 +51,24 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background-position: 0 0;
 }
 
-.icon-plug-todo {
+.icon-plug-task {
   background-position: 0 -37px;
 }
 
+.icon-plug-todo {
+  background-position: 0 -74px;
+}
+
+.icon-search {
+  background-position: 0 -143px;
+}
+
 .icon-todo {
-  background-position: 0 -106px;
+  background-position: 0 -179px;
 }
 
 .icon-user {
-  background-position: 0 -159px;
+  background-position: 0 -232px;
 }
 
 html {
