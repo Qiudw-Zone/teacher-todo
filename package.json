@@ -1,0 +1,19 @@
+{
+  "name": "teacher-todo",
+  "version": "1.0.0",
+  "description": "\"\"\u001b[D安装node服务端模块",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Qiudw-Zone/teacher-todo.git"
+  },
+  "author": "qdw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Qiudw-Zone/teacher-todo/issues"
+  },
+  "homepage": "https://github.com/Qiudw-Zone/teacher-todo#readme"
+}
