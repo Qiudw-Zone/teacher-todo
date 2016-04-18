@@ -1,0 +1,10 @@
+db.todos.remove({});
+
+db["todos"].find({name:/todo/})
+
+db.todos.find()
+
+
+db.todos.remove({name:'todo4'},1)
+
+db.courses.find()

@@ -1,4 +1,16 @@
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -42,33 +54,65 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-.icon-sprite, .icon-plug-course, .icon-plug-task, .icon-plug-todo, .icon-search, .icon-todo, .icon-user {
-  background-image: url('../img/icon-sf5552ae41e.png');
+.icon-sprite, .icon-close, .icon-courses, .icon-finish, .icon-new, .icon-plug-course, .icon-plug-task, .icon-plug-todo, .icon-remove, .icon-search, .icon-setting, .icon-stastic, .icon-tasks, .icon-todo, .icon-user {
+  background-image: url('../img/icon-s58fd984bfd.png');
   background-repeat: no-repeat;
 }
 
-.icon-plug-course {
+.icon-close {
   background-position: 0 0;
 }
 
-.icon-plug-task {
+.icon-courses {
   background-position: 0 -37px;
 }
 
-.icon-plug-todo {
+.icon-finish {
   background-position: 0 -74px;
 }
 
+.icon-new {
+  background-position: 0 -110px;
+}
+
+.icon-plug-course {
+  background-position: 0 -147px;
+}
+
+.icon-plug-task {
+  background-position: 0 -184px;
+}
+
+.icon-plug-todo {
+  background-position: 0 -221px;
+}
+
+.icon-remove {
+  background-position: 0 -290px;
+}
+
 .icon-search {
-  background-position: 0 -143px;
+  background-position: 0 -326px;
+}
+
+.icon-setting {
+  background-position: 0 -362px;
+}
+
+.icon-stastic {
+  background-position: 0 -399px;
+}
+
+.icon-tasks {
+  background-position: 0 -436px;
 }
 
 .icon-todo {
-  background-position: 0 -179px;
+  background-position: 0 -473px;
 }
 
 .icon-user {
-  background-position: 0 -232px;
+  background-position: 0 -526px;
 }
 
 html {
@@ -106,11 +150,12 @@ body {
   left: 50%;
   padding: 15px;
   margin-left: -307px;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   width: 600px;
   height: auto;
   background: #fff;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
   border-radius: 10px;
   color: #666;
 }
