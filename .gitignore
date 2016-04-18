@@ -1,0 +1,7 @@
+# 忽略内容
+
+# 忽略node_modules文件下的内容
+/node_modules/*
+
+# 忽略符合以下后缀的文件
+.[stackdump]
