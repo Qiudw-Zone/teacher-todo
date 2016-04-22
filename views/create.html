@@ -1,1 +1,94 @@
-create todo
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>创建TODO</title>
+		<link rel="stylesheet" href="/teacher-todo/src/css/lib/bootstrap.min.css">
+		<link rel="stylesheet" href="/teacher-todo/src/css/main.css">
+	</head>
+	<body>
+		<div class="create-container">
+			<div class="page-header">
+				<h1>定制属于你的TODO
+				</h1>
+			</div>
+			<div class="create-form-wrap">
+				<form role="form">
+					<div class="input-group mtb-30 col-sm-6">
+						<span class="input-group-addon">TODO标题</span>
+						<input type="text" class="form-control" placeholder="twitterhandle">
+					</div>
+					<div class="input-group mtb-30 col-sm-6">
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-default
+							dropdown-toggle" data-toggle="dropdown">
+							选择课程
+							<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="javascript:void(0);">数据库</a></li>
+								<li class="divider"></li>
+								<li><a href="javascript:void(0);">操作系统</a></li>
+								<li class="divider"></li>
+								<li><a href="javascript:void(0);">java</a></li>
+							</ul>
+						</div>
+						<input type="text" class="form-control">
+					</div>
+					<div class="row m-0">
+						<div class="fl input-group mr-30 col-sm-5">
+							<span class="input-group-addon">开始时间</span>
+							<input type="text" class="form-control">
+						</div>
+						<div class="fl input-group col-sm-5">
+							<span class="input-group-addon">结束时间</span>
+							<input type="text" class="form-control">
+						</div>
+					</div>
+					<div class="form-group mtb-30">
+						<label for="" class="control-label">TODO正文</label>
+						<textarea class="form-control" rows="3"></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="control-wrap mtb-15">
+				<button class="btn btn-primary mr-15">创建</button>
+				<button class="btn btn-primary">预览</button>
+			</div>
+			<div class="mask">
+				<div class="pop">
+					<i class="fr close"></i>
+					<div class="page-header">
+						<h3>TODO标题<small class="ml-15">2016-4-13</small>
+						</h3>
+					</div>
+					<div class="content-group">
+						<label for="" class="content-label col-sm-3">所属课程</label>
+						<div class="col-sm-9">
+							<p class="content-text">数据库</p>
+						</div>
+					</div>
+					<div class="content-group">
+						<label for="" class="content-label col-sm-3">开始时间</label>
+						<div class="col-sm-9">
+							<p class="content-text">2016-4-13</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			var require = {
+				baseUrl: '/teacher-todo/',
+				urlArgs: 'v=1.0.0',
+				waitSeconds: 0,
+				paths: {
+					jquery: '/teacher-todo/src/js/lib/jquery-1.11.1.min',
+					'bootstrap-validator': '/teacher-todo/src/js/lib/bootstrapValidator.min',
+					'bootstrap': '/teacher-todo/src/js/lib/bootstrap.min'
+				}
+			};
+		</script>
+		<script src="/teacher-todo/src/js/lib/require.min.js" data-main="/teacher-todo/src/js/main.js"></script>
+	</body>
+</html>

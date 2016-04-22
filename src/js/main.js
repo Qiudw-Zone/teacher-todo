@@ -1,4 +1,4 @@
-require(['jquery', 'bootstrap-validator'], function($) {
+require(['jquery', 'bootstrap-validator', 'bootstrap'], function($) {
     $(function() {
         $('#login,#reg').bootstrapValidator({
             message: 'This value is not valid',
