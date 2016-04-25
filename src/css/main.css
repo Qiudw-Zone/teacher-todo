@@ -84,13 +84,21 @@ img {
   margin: 0 !important;
 }
 
-.mtb-15 {
-  margin-top: 15px !important;
-  margin-bottom: 15px !important;
+.ml-10 {
+  margin-left: 10px !important;
 }
 
 .ml-15 {
   margin-left: 15px !important;
+}
+
+.ml-30 {
+  margin-left: 30px !important;
+}
+
+.mtb-15 {
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
 }
 
 .mtb-30 {

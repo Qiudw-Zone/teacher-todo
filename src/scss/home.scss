@@ -1,7 +1,8 @@
 @charset "utf-8";
-@import "compass/reset";
+// @import "compass/reset";
 @import "compass/css3/border-radius";
 @import "compass/css3/box-shadow";
+@import "common/reset.scss";
 
 $icon-spacing: 5px;
 $icon-layout: "vertical";
@@ -79,7 +80,6 @@ body{
     .create-course{
         height: 100%;
         .create-wrap{
-            float: right;
             @include size(160px,40px);
             padding:0 10px;
             margin-top:10px;
@@ -177,9 +177,8 @@ body{
     margin-top:5px;
     .home-nav{
         float: left;
-        @include size(200px,auto);
+        @include size(200px,600px);
         padding-bottom: 20px;
-        height: auto;
         font-weight: bold;
         color: #fff;
         text-align: center;
@@ -250,7 +249,7 @@ body{
     }
     .list-wrap{
         overflow: hidden;
-        min-height: 600px;
+        height: 600px;
         border-left:3px solid #666;
 
         .lists-nav{
@@ -291,12 +290,13 @@ body{
         }
         .main-wrap{
             @include size(300%,500px);
-            margin-left:-200%;
+            margin-left:-100%;
         }
         .main{
             float: left;
             padding:15px;
             @include size(33.33%,100%);
+            overflow: hidden;
         }
         .add-todo-group{
             @include size(700px,180px);
@@ -307,7 +307,7 @@ body{
                 float: left;
                 position: relative;
                 top:10px;
-                @include size(64px,64px);
+                @include size(64px,65px);
             }
             .add-todo-control{
                 float: left;
@@ -407,6 +407,51 @@ body{
                 @include bg(#FF7B28);
                 color:#fff;
                 font-weight: bold;
+            }
+        }
+    }
+    .course-wrap{
+        position:absolute;
+        top:135px;
+        left:205px;
+        @include size(580px,480px);
+        padding:0 15px 15px;
+        @include bg(#f1f1f1);
+        .close-course{
+            position: relative;
+            float: right;
+            @include size(20px,65px);
+            top:10px;
+            left:15px;
+            line-height: 65px;
+            text-align: center;
+            @include bg(#C6CFDA);
+            cursor: pointer;
+            border-radius:5px 0 0 5px;
+            &:hover{
+                @include bg(#5D80A0);
+            }
+        }
+        .create-crouse-wrap{
+            @include size(100%,auto);
+            margin-top: 30px;
+            .group{
+                @include size(350px,50px);
+                margin:auto;
+                line-height: 50px;
+                border-bottom:1px solid #ccc;
+                font-size: 18px;
+            }
+            .group-input{
+                padding-left:15px;
+                @include size(100%,100%);
+                border:none;
+                outline: none;
+                @include bg(none);
+            }
+            .btn-course{
+                margin:30px auto;
+                @include size(400px,35px);
             }
         }
     }

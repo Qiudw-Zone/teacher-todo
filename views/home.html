@@ -1,191 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Home首页</title>
-	<link rel="stylesheet" href="/teacher-todo/src/css/lib/bootstrap.min.css">
-	<link rel="stylesheet" href="/teacher-todo/src/css/home.css">
-</head>
-<body>
-	<div class="home-head">
-		<div class="head-wrap col-sm-6">
-			<span class="user icon-user"></span>
-			<a href="" class="logout">退出</a>
-		</div>
-		<div class="head-wrap col-sm-6">
-			<div class="create-course col-sm-6">
-				<p class="create-wrap">
-					<i class="create icon-plug-course"></i>
-					<span class="create-course-text">创建新课程</span>
-				</p>
-			</div>
-			<div class="search col-sm-6">
-				<label for="search" class="search-label icon-search"></label>
-				<input type="text" id="search" class="search-input">
-			</div>
-		</div>
-        <div class="user-info-wrap off">
-            <div class="show-info ">
-                <i class="info-close icon-close"></i>
-                <p class="info">
-                    <span class="info-name">用户名：</span>
-                    <span class="info-content">寒影</span>
-                </p>
-                <p class="info">
-                    <span class="info-name">密码：</span>
-                    <span class="info-content">123456</span>
+    <head>
+        <meta charset="UTF-8">
+        <title>Home首页</title>
+        <link rel="stylesheet" href="/teacher-todo/src/css/lib/bootstrap.min.css">
+        <link rel="stylesheet" href="/teacher-todo/src/css/home.css">
+    </head>
+    <body>
+        <div class="home-head">
+            <div class="head-wrap col-sm-4">
+                <span class="user icon-user"></span>
+                <a href="" class="logout">退出</a>
+            </div>
+            <div class="head-wrap col-sm-8">
+                <div class="create-course col-sm-4">
+                    <p class="create-wrap" id="create-todo">
+                        <i class="create icon-plug-course"></i>
+                        <span class="create-course-text">创建TODO</span>
+                    </p>
+                </div>
+                <div class="create-course col-sm-4">
+                    <p class="create-wrap" id="create-course">
+                        <i class="create icon-plug-course"></i>
+                        <span class="create-course-text">创建新课程</span>
+                    </p>
+                </div>
+                <div class="search col-sm-4">
+                    <label for="search" class="search-label icon-search"></label>
+                    <input type="text" id="search" class="search-input">
+                </div>
+            </div>
+            <div class="user-info-wrap off">
+                <div class="show-info ">
+                    <i class="info-close icon-close"></i>
+                    <p class="info">
+                        <span class="info-name">用户名：</span>
+                        <span class="info-content">寒影</span>
+                    </p>
+                    <p class="info">
+                        <span class="info-name">密码：</span>
+                        <span class="info-content">123456</span>
+                    </p>
+                </div>
+                <div class="edit-info off">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-4 control-label">用户名：</label>
+                            <div class="col-sm-8">
+                                <input type="text" id="username" class="form-control" placeholder="Enter Username">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-sm-4 control-label">密码：</label>
+                            <div class="col-sm-8">
+                                <input type="password" id="password" class="col-sm-10 form-control" placeholder="Enter Password">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <p class="btn-wrap">
+                    <button class="edit-user btn btn-info">修改</button>
                 </p>
             </div>
-            <div class="edit-info off">
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label for="username" class="col-sm-4 control-label">用户名：</label>
-                        <div class="col-sm-8">
-                            <input type="text" id="username" class="form-control" placeholder="Enter Username">                        
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="col-sm-4 control-label">密码：</label>
-                        <div class="col-sm-8">
-                            <input type="password" id="password" class="col-sm-10 form-control" placeholder="Enter Password">                        
-                        </div>
-                    </div>
-                </form>                
-            </div>
-            <p class="btn-wrap">
-                <button class="edit-user btn btn-info">修改</button>
-            </p>
         </div>
-	</div>
-	<div class="home-body">
-		<div class="home-nav">
-			<p class="create-task"><i class="plug-task icon-setting"></i><span class="nav-text">课程管理</span></p>
-			<ul class="nav-todo">
-				<li class="nav-item"><i class="nav-icon icon-tasks"></i><span class="nav-text">我的任务</span></li>
-				<li class="nav-item nav-course-close"><i class="nav-icon icon-courses"></i><span class="nav-text">我的课程</span></li>
-                <ul class="courses off">
-                    <li class="course-item">数据库</li>
-                    <li class="course-item">数据结构</li>
-                    <li class="course-item">操作系统</li>
-                    <li class="course-item">计算机网络</li>
+        <div class="home-body">
+            <div class="home-nav">
+                <p class="create-task"><i class="plug-task icon-setting"></i><span class="nav-text">课程管理</span></p>
+                <ul class="nav-todo">
+                    <li class="nav-item"><i class="nav-icon icon-tasks"></i><span class="nav-text">我的任务</span></li>
+                    <li class="nav-item nav-course-close"><i class="nav-icon icon-courses"></i><span class="nav-text">我的课程</span></li>
+                    <ul class="courses off">
+                        <li class="course-item">数据库</li>
+                        <li class="course-item">数据结构</li>
+                        <li class="course-item">操作系统</li>
+                        <li class="course-item">计算机网络</li>
+                    </ul>
+                    <li class="nav-item"><i class="nav-icon icon-stastic"></i><span class="nav-text">个人统计</span></li>
                 </ul>
-				<li class="nav-item"><i class="nav-icon icon-stastic"></i><span class="nav-text">个人统计</span></li>
-			</ul>
-		</div>
-		<div class="list-wrap">
-            <ul class="lists-nav">
-                <li class="list-nav-item">进行中</li>
-                <li class="list-nav-item">已终止</li>
-                <li class="list-nav-item">待完成</li>
-            </ul>
-            <div class="list-main">
-                <div class="main-wrap">
-                    <div class="main">
-                        <div class="add-todo-group">
-                            <label for="" class="add-todo-label icon-plug-todo"></label>
-                            <div class="add-todo-control"><input type="text" class="add-todo-input" placeholder="输入标题Enter创建TODO"></div>
+            </div>
+            <div class="list-wrap">
+                <ul class="lists-nav">
+                    <li class="list-nav-item">进行中</li>
+                    <li class="list-nav-item">已终止</li>
+                    <li class="list-nav-item">待完成</li>
+                </ul>
+                <div class="list-main">
+                    <div class="main-wrap">
+                        <div class="main">
+                            <div class="add-todo-group">
+                                <label for="" class="add-todo-label icon-plug-todo"></label>
+                                <div class="add-todo-control"><input type="text" class="add-todo-input" placeholder="输入标题Enter创建TODO"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="main">
-                        <ul class="todos">
-                            <li class="todo">
-                                <p class="todo-info">
-                                    <i class="todo-new icon-new"></i>
-                                    <a class="todo-name" href="">周一课程计划</a>
-                                    <span class="todo-times">2106/1/1 9:00 - 2016/1/2 18:00</span>
-                                    <span class="todo-time">2016/4/12</span>
-                                </p>
-                                <p class="todo-operate">
-                                    <i class="operate-icon icon-remove" title="删除"></i>
-                                    <i class="operate-icon icon-finish" title="结束"></i>
-                                </p>
-                            </li>
-                            <li class="todo">
-                                <p class="todo-info">
-                                    <i class="todo-new icon-new"></i>
-                                    <a class="todo-name" href="">周一课程计划</a>
-                                    <span class="todo-times">2106/1/1 9:00 - 2016/1/2 18:00</span>
-                                    <span class="todo-time">2016/4/12</span>
-                                </p>
-                                <p class="todo-operate">
-                                    <i class="operate-icon icon-remove" title="删除"></i>
-                                    <i class="operate-icon icon-finish" title="结束"></i>
-                                </p>
-                            </li>
-                            <li class="todo">
-                                <p class="todo-info">
-                                    <a href="" class="todo-name">周一课程计划</a>
-                                    <span class="todo-times">2106/1/1 9:00 - 2016/1/2 18:00</span>
-                                    <span class="todo-time">2016/4/12</span>
-                                </p>
-                                <p class="todo-operate">
-                                    <i class="operate-icon icon-remove" title="删除"></i>
-                                    <i class="operate-icon icon-finish" title="结束"></i>
-                                </p>
-                            </li>
-                        </ul>
-                        <p class="paginations">
-                            <a href="" class="prev page">上一页</a>
-                            <a href="" class="page cur">1</a>
-                            <a href="" class="page">2</a>
-                            <a href="" class="page">3</a>
-                            <a href="" class="page">4</a>
-                            <a href="" class="page">5</a>
-                            <a href="" class="page">下一页</a>
-                        </p>
-                    </div>
-                    <div class="main">
-                        <ul class="todos">
-                            <li class="todo">
-                                <p class="todo-info finished">
-                                    <i class="todo-new icon-new"></i>
-                                    <a class="todo-name" href="">周一课程计划</a>
-                                    <span>2106/1/1 9:00 - 2016/1/2 18:00</span>
-                                    <span class="todo-time">2016/4/12</span>
-                                </p>
-                            </li>
-                            <li class="todo">
-                                <p class="todo-info finished">
-                                    <i class="todo-new icon-new"></i>
-                                    <a class="todo-name" href="">周一课程计划</a>
-                                    <span>2106/1/1 9:00 - 2016/1/2 18:00</span>
-                                    <span class="todo-time">2016/4/12</span>
-                                </p>
-                            </li>
-                            <li class="todo">
-                                <p class="todo-info finished">
-                                    <a href="" class="todo-name">周一课程计划</a>
-                                    <span>2106/1/1 9:00 - 2016/1/2 18:00</span>
-                                    <span class="todo-time">2016/4/12</span>
-                                </p>
-                            </li>
-                        </ul>
-                        <p class="paginations">
-                            <a href="" class="prev page">上一页</a>
-                            <a href="" class="page cur">1</a>
-                            <a href="" class="page">2</a>
-                            <a href="" class="page">3</a>
-                            <a href="" class="page">4</a>
-                            <a href="" class="page">5</a>
-                            <a href="" class="page">下一页</a>
-                        </p>
+                        <div class="main">
+                            <ul class="todos">
+                                <li class="todo">
+                                    <p class="todo-info">
+                                        <i class="todo-new icon-new"></i>
+                                        <a class="todo-name" href="">周一课程计划</a>
+                                        <span class="todo-times">2106/1/1 9:00 - 2016/1/2 18:00</span>
+                                        <span class="todo-time">2016/4/12</span>
+                                    </p>
+                                    <p class="todo-operate">
+                                        <button class="btn btn-success glyphicon glyphicon-ok"></button>
+                                        <button class="btn btn-warning glyphicon glyphicon-remove"></button>
+                                        <!-- <i class="operate-icon icon-remove" title="删除"></i> -->
+                                        <!-- <i class="operate-icon icon-finish" title="结束"></i> -->
+                                    </p>
+                                </li>
+                                <li class="todo">
+                                    <p class="todo-info">
+                                        <i class="todo-new icon-new"></i>
+                                        <a class="todo-name" href="">周一课程计划</a>
+                                        <span class="todo-times">2106/1/1 9:00 - 2016/1/2 18:00</span>
+                                        <span class="todo-time">2016/4/12</span>
+                                    </p>
+                                    <p class="todo-operate">
+                                        <button class="btn btn-success glyphicon glyphicon-ok"></button>
+                                        <button class="btn btn-warning glyphicon glyphicon-remove"></button>
+                                    </p>
+                                </li>
+                                <li class="todo">
+                                    <p class="todo-info">
+                                        <a href="" class="todo-name">周一课程计划</a>
+                                        <span class="todo-times">2106/1/1 9:00 - 2016/1/2 18:00</span>
+                                        <span class="todo-time">2016/4/12</span>
+                                    </p>
+                                    <p class="todo-operate">
+                                       <button class="btn btn-success glyphicon glyphicon-ok"></button>
+                                        <button class="btn btn-warning glyphicon glyphicon-remove"></button>
+                                    </p>
+                                </li>
+                            </ul>
+                            <p class="paginations">
+                                <a href="" class="prev page">上一页</a>
+                                <a href="" class="page cur">1</a>
+                                <a href="" class="page">2</a>
+                                <a href="" class="page">3</a>
+                                <a href="" class="page">4</a>
+                                <a href="" class="page">5</a>
+                                <a href="" class="page">下一页</a>
+                            </p>
+                        </div>
+                        <div class="main">
+                            <ul class="todos">
+                                <li class="todo">
+                                    <p class="todo-info finished">
+                                        <i class="todo-new icon-new"></i>
+                                        <a class="todo-name" href="">周一课程计划</a>
+                                        <span>2106/1/1 9:00 - 2016/1/2 18:00</span>
+                                        <span class="todo-time">2016/4/12</span>
+                                    </p>
+                                </li>
+                                <li class="todo">
+                                    <p class="todo-info finished">
+                                        <i class="todo-new icon-new"></i>
+                                        <a class="todo-name" href="">周一课程计划</a>
+                                        <span>2106/1/1 9:00 - 2016/1/2 18:00</span>
+                                        <span class="todo-time">2016/4/12</span>
+                                    </p>
+                                </li>
+                                <li class="todo">
+                                    <p class="todo-info finished">
+                                        <a href="" class="todo-name">周一课程计划</a>
+                                        <span>2106/1/1 9:00 - 2016/1/2 18:00</span>
+                                        <span class="todo-time">2016/4/12</span>
+                                    </p>
+                                </li>
+                            </ul>
+                            <p class="paginations">
+                                <a href="" class="prev page">上一页</a>
+                                <a href="" class="page cur">1</a>
+                                <a href="" class="page">2</a>
+                                <a href="" class="page">3</a>
+                                <a href="" class="page">4</a>
+                                <a href="" class="page">5</a>
+                                <a href="" class="page">下一页</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="course-wrap off">
+                <i class="close-course glyphicon glyphicon-backward"></i>
+                <div class="page-header">
+                    <h3>我的课程<button class="ml-30 btn btn-primary">新增</button></h3>
+                </div>
+                <table class="table table-hover off">
+                    <thead>
+                        <tr>
+                            <th>名称</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><h4>名称名称Tanmay名称<small class="ml-15">教二</small></h4></td>
+                            <td><button class="btn btn-primary  glyphicon glyphicon-edit"></button><button class="ml-10 btn btn-primary glyphicon glyphicon-remove"></button></td>
+                        </tr>
+                        <tr>
+                            <td><h4>名称名称Tanmay名称<small class="ml-15">教二</small></h4></td>
+                            <td><button class="btn btn-primary  glyphicon glyphicon-edit"></button><button class="ml-10 btn btn-primary glyphicon glyphicon-remove"></button></td>
+                        </tr>
+                        <tr>
+                            <td><h4>名称名称Tanmay名称<small class="ml-15">教二</small></h4></td>
+                            <td><button class="btn btn-primary  glyphicon glyphicon-edit"></button><button class="ml-10 btn btn-primary glyphicon glyphicon-remove"></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="create-crouse-wrap">
+                    <form class="course-form">
+                        <div class="group"><input type="text" class="group-input" placeholder="輸入课程名"></div>
+                        <div class="group"><input type="text" class="group-input" placeholder="輸入课程地点"></div>
+                    </form>
+                    <div class="btn-course text-right"><button class="btn btn-primary">提交</button></div>
+                </div>
+            </div>
         </div>
-	</div>
-	<div class="home-foot">©Copyright Qiudw</div>
-	<script>
-    var require = {
+        <div class="home-foot">©Copyright Qiudw</div>
+        <script>
+        var require = {
         baseUrl: '/teacher-todo/',
         urlArgs: 'v=1.0.0',
         waitSeconds: 0,
         paths: {
-            jquery: '/teacher-todo/src/js/lib/jquery-1.11.1.min',
-            'bootstrap-validator': '/teacher-todo/src/js/lib/bootstrapValidator.min'
+        jquery: '/teacher-todo/src/js/lib/jquery-1.11.1.min',
+        nicescroll: '/teacher-todo/src/js/lib/jquery-nicescroll',
+        'bootstrap-validator': '/teacher-todo/src/js/lib/bootstrapValidator.min'
         }
-    };
-    </script>
-	<script src="/teacher-todo/src/js/lib/require.min.js" data-main="src/js/home"></script>
-</body>
+        };
+        </script>
+        <script src="/teacher-todo/src/js/lib/require.min.js" data-main="src/js/home"></script>
+    </body>
 </html>
