@@ -1,5 +1,6 @@
-require(['jquery', 'bootstrap-validator', 'bootstrap'], function($) {
+require(['jquery', 'ckeditor', 'bootstrap-validator', 'bootstrap'], function($) {
     $(function() {
+        console.log(1);
         $('#login,#reg').bootstrapValidator({
             message: 'This value is not valid',
             feedbackIcons: {

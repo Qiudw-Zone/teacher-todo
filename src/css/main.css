@@ -289,8 +289,14 @@ body {
   height: 35px;
   text-align: right;
   font-weight: bold;
+  color: #4F9F2E;
 }
 .create-container .content-text {
-  height: 35px;
   padding: 0px 10px;
+}
+.create-container .content-main-wrap {
+  height: auto;
+}
+.create-container .content-main {
+  overflow: hidden;
 }
