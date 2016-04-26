@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>Home首页</title>
-        <link rel="stylesheet" href="/teacher-todo/src/css/lib/bootstrap.min.css">
-        <link rel="stylesheet" href="/teacher-todo/src/css/home.css">
+        <link rel="stylesheet" href="/css/lib/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/home.css">
     </head>
-    <body>
+    <body class="home-page">
         <div class="home-head">
             <div class="head-wrap col-sm-4">
                 <span class="user icon-user"></span>
@@ -68,8 +68,8 @@
                 <p class="create-task"><i class="plug-task icon-setting"></i><span class="nav-text">课程管理</span></p>
                 <ul class="nav-todo">
                     <li class="nav-item"><i class="nav-icon icon-tasks"></i><span class="nav-text">我的任务</span></li>
-                    <li class="nav-item nav-course-close"><i class="nav-icon icon-courses"></i><span class="nav-text">我的课程</span></li>
-                    <ul class="courses off">
+                    <li id="nav-course" class="nav-item nav-course-close" data-status="off"><i class="nav-icon icon-courses"></i><span class="nav-text">我的课程</span></li>
+                    <ul class="courses" style="display:none;">
                         <li class="course-item">数据库</li>
                         <li class="course-item">数据结构</li>
                         <li class="course-item">操作系统</li>
@@ -182,11 +182,11 @@
                 </div>
             </div>
             <div class="course-wrap off">
-                <i class="close-course glyphicon glyphicon-backward"></i>
+                <i class="close-course glyphicon glyphicon-backward" title="收起"></i>
                 <div class="page-header">
-                    <h3>我的课程<button class="ml-30 btn btn-primary">新增</button></h3>
+                    <h3>我的课程<button class="ml-30 btn btn-primary" id="add-course" data-type="add">新增</button></h3>
                 </div>
-                <table class="table table-hover off">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>名称</th>
@@ -208,7 +208,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="create-crouse-wrap">
+                <div class="create-crouse-wrap off">
                     <form class="course-form">
                         <div class="group"><input type="text" class="group-input" placeholder="輸入课程名"></div>
                         <div class="group"><input type="text" class="group-input" placeholder="輸入课程地点"></div>
@@ -220,16 +220,19 @@
         <div class="home-foot">©Copyright Qiudw</div>
         <script>
         var require = {
-        baseUrl: '/teacher-todo/',
+        baseUrl: './',
         urlArgs: 'v=1.0.0',
         waitSeconds: 0,
         paths: {
-        jquery: '/teacher-todo/src/js/lib/jquery-1.11.1.min',
-        nicescroll: '/teacher-todo/src/js/lib/jquery-nicescroll',
-        'bootstrap-validator': '/teacher-todo/src/js/lib/bootstrapValidator.min'
+        jquery: '/js/lib/jquery-1.11.1.min',
+        nicescroll: '/js/lib/jquery-nicescroll',
+        'bootstrap': '/js/lib/bootstrap.min',
+        'bootstrap-validator': '/js/lib/bootstrapValidator.min'
         }
         };
+        var username = "{{username}}";
+        console.log(username)
         </script>
-        <script src="/teacher-todo/src/js/lib/require.min.js" data-main="src/js/home"></script>
+        <script src="/js/lib/require.min.js" data-main="/js/main.js"></script>
     </body>
 </html>

@@ -4,8 +4,8 @@
 	<meta charset="UTF-8">
 	<title>欢迎使用教学TODO</title>
 
-	<link rel="stylesheet" href="src/css/lib/bootstrap.min.css">
-	<link rel="stylesheet" href="src/css/main.css">
+	<link rel="stylesheet" href="/css/lib/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/main.css">
 </head>
 <body class="s-body">
 	<div class="wraper">
@@ -15,18 +15,18 @@
 				<p class="title">欢迎登陆TODO</p>
 			</div>
 			<div class="form-nav"><button id="form-nav-text" data-type="#reg" class="btn btn-info">注册</button></div>
-			<form id="login" class="form-horizontal" role="form">
+			<form id="login" class="form-horizontal" role="form" data-type="login">
 			    <div class="form-group">
-			        <label for="username" class="col-sm-2 control-label">用户名</label>
+			        <label for="login-username" class="col-sm-2 control-label">用户名</label>
 			        <div class="col-sm-10">
-			            <input type="text" name="username" class="form-control" id="username" 
+			            <input type="text" name="username" class="form-control" id="login-username" 
 			            placeholder="Enter username">
 			        </div>
 				</div>
 				<div class="form-group">
 					<label for="password" class="col-sm-2 control-label">密码</label>
 					<div class="col-sm-10">
-						<input type="text" name="password" class="form-control" id="password" placeholder="Enter password">
+						<input type="password" name="password" class="form-control" id="login-password" placeholder="Enter password">
 					</div>
 				</div>
 				<div class="form-group">
@@ -35,29 +35,29 @@
 				    </div>
 				</div>
 			</form>
-			<form id="reg" class="form-horizontal off" role="form">
+			<form id="reg" class="form-horizontal off" role="form" data-type="reg">
 				<div class="form-group">
-			        <label for="username" class="col-sm-2 control-label">用户名</label>
+			        <label for="reg-username" class="col-sm-2 control-label">用户名</label>
 			        <div class="col-sm-10">
-			            <input type="text" name="reg-usernmae" class="form-control" id="username" 
+			            <input type="text" name="username" class="form-control" id="reg-username" 
 			            placeholder="Enter username">
 			        </div>
 				</div>
 				<div class="form-group">
 					<label for="password" class="col-sm-2 control-label">密码</label>
 					<div class="col-sm-10">
-						<input type="text" name="password" class="form-control" id="reg-password" placeholder="Enter password">
+						<input type="password" name="password" class="form-control" id="reg-password" placeholder="Enter password">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="password" class="col-sm-2 control-label">确认密码</label>
 					<div class="col-sm-10">
-						<input type="text" name="comfirm_password" class="form-control" id="reg-comfirm-password" placeholder="Comfirm password">
+						<input type="password" name="comfirm_password" class="form-control" id="reg-comfirm-password" placeholder="Comfirm password">
 					</div>
 				</div>
 				<div class="form-group">
 				    <div class="col-sm-offset-10 col-sm-2">
-				        <button type="submit" class="btn btn-primary">提交</button>
+				        <button type="submit" class="btn btn-primary" data-type="reg">提交</button>
 				    </div>
 				</div>
 			</form>
@@ -66,16 +66,16 @@
 	
 	<script>
     var require = {
-        baseUrl: '/teacher-todo/',
+        baseUrl: './',
         urlArgs: 'v=1.0.0',
         waitSeconds: 0,
         paths: {
-            jquery: '/teacher-todo/src/js/lib/jquery-1.11.1.min',
-            'bootstrap-validator': '/teacher-todo/src/js/lib/bootstrapValidator.min'
-            'bootstrap': '/teacher-todo/src/js/lib/bootstrap.min'
+            jquery: '/js/lib/jquery-1.11.1.min',
+            'bootstrap-validator': '/js/lib/bootstrapValidator.min',
+            'bootstrap': '/js/lib/bootstrap.min'
         }
     };
     </script>
-	<script src="src/js/lib/require.min.js" data-main="src/js/main"></script>
+	<script src="/js/lib/require.min.js" data-main="/js/main.js"></script>
 </body>
 </html>

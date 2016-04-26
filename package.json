@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/Qiudw-Zone/teacher-todo/issues"
   },
-  "homepage": "https://github.com/Qiudw-Zone/teacher-todo#readme"
+  "homepage": "https://github.com/Qiudw-Zone/teacher-todo#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "hbs": "^4.0.0"
+  }
 }

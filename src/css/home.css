@@ -405,6 +405,10 @@ body {
   line-height: 40px;
   font-size: 16px;
   border-bottom: 1px solid #666;
+  cursor: pointer;
+}
+.home-body .home-nav .course-item:hover {
+  background: #666;
 }
 .home-body .list-wrap {
   overflow: hidden;
