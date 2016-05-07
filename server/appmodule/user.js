@@ -101,6 +101,28 @@ exports.doLogin = function(data,call){
     mogos.findOneDB(queryModel);
 }
 
+// 获取用户信息模块
+exports.getUser = function(name,call){
+    var results = {
+        code:-1,
+        msg:'暂无数据！'
+    };
+    if(name){
+        queryModel.data.name = name;
+    }
+    if(call && typeof call === "function"){
+        queryModel.call = function(res){
+            if(res){
+                results.code = 1;
+                results.msg = "查询成功！";
+                results.result = res;
+            }
+            call(results);
+        }
+    }
+    mogos.findOneDB(queryModel);
+}
+
 // 用户信息编辑模块
 var updateModel = {
     table:'users',

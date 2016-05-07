@@ -9,7 +9,11 @@
     <body class="home-page">
         <div class="home-head">
             <div class="head-wrap col-sm-4">
-                <span class="user icon-user"></span>
+                <button type="button" class="user btn btn-info btn-lg" style="text-shadow: black 5px 3px 3px;">
+                    <span class="glyphicon glyphicon-user"></span> {{username}}
+                </button>
+                <!-- <span class="user icon-user"></span>
+                <span class="user-name">欢迎你：</span> -->
                 <a href="" class="logout">退出</a>
             </div>
             <div class="head-wrap col-sm-8">
@@ -35,32 +39,36 @@
                     <i class="info-close icon-close"></i>
                     <p class="info">
                         <span class="info-name">用户名：</span>
-                        <span class="info-content">寒影</span>
+                        <span class="info-content">{{username}}</span>
                     </p>
                     <p class="info">
-                        <span class="info-name">密码：</span>
-                        <span class="info-content">123456</span>
+                        <span id="info-name" class="info-name">密码：</span>
+                        <span id="info-password" class="info-content">123456</span>
+                    </p>
+                    <p class="btn-wrap">
+                        <button id="edit-user" class="edit-user btn btn-info">修改</button>
                     </p>
                 </div>
                 <div class="edit-info off">
-                    <form class="form-horizontal" role="form">
+                    <form id="user-form" class="form-horizontal" role="form">
                         <div class="form-group">
                             <label for="username" class="col-sm-4 control-label">用户名：</label>
                             <div class="col-sm-8">
-                                <input type="text" id="username" class="form-control" placeholder="Enter Username">
+                                <input type="text" id="username" name="username" class="form-control" placeholder="Enter Username">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="password" class="col-sm-4 control-label">密码：</label>
                             <div class="col-sm-8">
-                                <input type="password" id="password" class="col-sm-10 form-control" placeholder="Enter Password">
+                                <input type="password" id="password" name="password" class="col-sm-10 form-control" placeholder="Enter Password">
                             </div>
                         </div>
+                        <p class="btn-wrap">
+                            <button id="sub-edit" type="submit" class="edit-user btn btn-info">提交</button>
+                        </p>
                     </form>
                 </div>
-                <p class="btn-wrap">
-                    <button class="edit-user btn btn-info">修改</button>
-                </p>
+                
             </div>
         </div>
         <div class="home-body">
@@ -70,10 +78,6 @@
                     <li class="nav-item"><i class="nav-icon icon-tasks"></i><span class="nav-text">我的任务</span></li>
                     <li id="nav-course" class="nav-item nav-course-close" data-status="off"><i class="nav-icon icon-courses"></i><span class="nav-text">我的课程</span></li>
                     <ul class="courses" style="display:none;">
-                        <li class="course-item">数据库</li>
-                        <li class="course-item">数据结构</li>
-                        <li class="course-item">操作系统</li>
-                        <li class="course-item">计算机网络</li>
                     </ul>
                     <li class="nav-item"><i class="nav-icon icon-stastic"></i><span class="nav-text">个人统计</span></li>
                 </ul>
@@ -178,6 +182,51 @@
                                 <a href="" class="page">下一页</a>
                             </p>
                         </div>
+                        <div class="main">
+                            <ul class="todos">
+                                <li class="todo">
+                                    <p class="todo-info">
+                                        <i class="todo-new icon-new"></i>
+                                        <a class="todo-name" href="">周一课程计划</a>
+                                        <span class="todo-times">2106/1/1 9:00 - 2016/1/2 18:00</span>
+                                        <span class="todo-time">2016/4/12</span>
+                                    </p>
+                                    <p class="todo-operate">
+                                        <button class="btn btn-warning glyphicon glyphicon-remove"></button>
+                                    </p>
+                                </li>
+                                <li class="todo">
+                                    <p class="todo-info">
+                                        <i class="todo-new icon-new"></i>
+                                        <a class="todo-name" href="">周一课程计划</a>
+                                        <span class="todo-times">2106/1/1 9:00 - 2016/1/2 18:00</span>
+                                        <span class="todo-time">2016/4/12</span>
+                                    </p>
+                                    <p class="todo-operate">
+                                        <button class="btn btn-warning glyphicon glyphicon-remove"></button>
+                                    </p>
+                                </li>
+                                <li class="todo">
+                                    <p class="todo-info">
+                                        <a href="" class="todo-name">周一课程计划</a>
+                                        <span class="todo-times">2106/1/1 9:00 - 2016/1/2 18:00</span>
+                                        <span class="todo-time">2016/4/12</span>
+                                    </p>
+                                    <p class="todo-operate">
+                                        <button class="btn btn-warning glyphicon glyphicon-remove"></button>
+                                    </p>
+                                </li>
+                            </ul>
+                            <p class="paginations">
+                                <a href="" class="prev page">上一页</a>
+                                <a href="" class="page cur">1</a>
+                                <a href="" class="page">2</a>
+                                <a href="" class="page">3</a>
+                                <a href="" class="page">4</a>
+                                <a href="" class="page">5</a>
+                                <a href="" class="page">下一页</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -193,7 +242,7 @@
                             <th>操作</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="table-courses">
                         <tr>
                             <td><h4>名称名称Tanmay名称<small class="ml-15">教二</small></h4></td>
                             <td><button class="btn btn-primary  glyphicon glyphicon-edit"></button><button class="ml-10 btn btn-primary glyphicon glyphicon-remove"></button></td>
@@ -210,10 +259,10 @@
                 </table>
                 <div class="create-crouse-wrap off">
                     <form class="course-form">
-                        <div class="group"><input type="text" class="group-input" placeholder="輸入课程名"></div>
-                        <div class="group"><input type="text" class="group-input" placeholder="輸入课程地点"></div>
+                        <div class="group"><input type="text" name="coursename" id="coursename" class="group-input" placeholder="輸入课程名"></div>
+                        <div class="group"><input type="text" name="courseaddr" id="courseaddr" class="group-input" placeholder="輸入课程地点"></div>
                     </form>
-                    <div class="btn-course text-right"><button class="btn btn-primary">提交</button></div>
+                    <div class="btn-course text-right"><button id="btn-course" class="btn btn-primary">提交</button></div>
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 var dbConf = require("../dbmodule/mgdbConf");
 var mogos = require("../dbmodule/operateDB");
 
-// 查询用户
+// 查询课程
 var queryModel = {
     table:'courses',
     data:{
@@ -30,6 +30,38 @@ exports.queryCourse = function(name,call){
         }
     }
     mogos.findOneDB(queryModel);
+}
+
+// 查詢用户课程
+var queryAllModel = {
+    table:'courses',
+    data:{
+        uname:'',
+    },
+    call:function(res){
+        console.log(res);
+    }
+}
+exports.queryAllCourse = function(name,call){
+    var results = {
+        code:-1,
+        msg:'暂无数据！'
+    };
+    if(name){
+        queryAllModel.data.uname = name;
+    }
+    
+    if(call && typeof call === "function"){
+        queryAllModel.call = function(res){
+            if(res){
+                results.code = 1;
+                results.msg = "查询成功！";
+                results.result = res;
+            }
+            call(results);
+        }
+    }
+    mogos.findDB(queryAllModel);
 }
 
 var insertModel = {
@@ -166,44 +198,3 @@ exports.removeCourse = function(name,call){
         call(results);
     }
 }
-
-/*mogos.insertDB(insertCourseData);
-
-var findConditInCourses ={
-    table:'courses',
-    data:{
-        name:'database'
-    },
-    call:function(res){
-        console.log(res);
-    }
-}
-
-mogos.findOneDB(findConditInCourses);
-
-var updateinCourse ={
-    table:'courses',
-    data:{
-        condit:{name:'database'},
-        update:{name:'gaoshu'},
-        options:{multi:true}
-    },
-    call:function(res){
-        console.log(res);
-    }   
-}
-
-mogos.updateDB(updateinCourse)
-
-var removeInCourses ={
-    table:'courses',
-    data:{
-        condit:{name:'gaoshu'},
-        options:{multi:1}
-    },
-    call:function(res){
-        console.log(res)
-    }
-}
-
-mogos.removeDB(removeInCourses);*/

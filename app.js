@@ -43,6 +43,13 @@ app.post('/login', function(req, res) {
     });
 });
 
+// 查詢用户信息
+app.get('/get-user', function(req, res) {
+    user.editUser(req.query.name,function(response){
+        res.send(response);
+    });
+});
+
 app.get('/edit-user', function(req, res) {
     var userInfo = {
         name:'qdw05',
@@ -105,13 +112,9 @@ app.get('/edit-todo', function(req, res) {
 
 
 // course模快
-app.get('/create-course', function(req, res) {
-    var courseInfo = {
-        name:'gaoshu',
-        addr:'addr1',
-    }
-    course.createCourse(courseInfo,function(response){
-        console.log(response)
+app.post('/create-course', function(req, res) {
+    course.createCourse(req.body,function(response){
+        res.send(response);
     });
 });
 
@@ -129,9 +132,9 @@ app.get('/edit-course', function(req, res) {
 });
 
 app.get('/query-course', function(req, res) {
-    /*course.removeCourse('java',function(response){
-        console.log(response)
-    });*/
+    course.queryAllCourse(req.query.uname,function(response){
+        res.send(response);
+    });
 });
 
 app.get('/del-course', function(req, res) {

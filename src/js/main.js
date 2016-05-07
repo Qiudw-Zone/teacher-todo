@@ -148,8 +148,16 @@ require(['jquery', 'bootstrap-validator', 'bootstrap','nicescroll'], function($)
                 // 初始化滚动条
                 this.initScroll();
 
+                this.initUserInfo();
+
                 // 初始化页面中的模块切换功能
                 this.initPage();
+
+                // 初始化课程列表
+                this.initCourse();
+
+                // 创建课程
+                this.createCourse();
             },
             initPage:function(){
                 var courseWrap = $(".course-wrap");
@@ -195,8 +203,23 @@ require(['jquery', 'bootstrap-validator', 'bootstrap','nicescroll'], function($)
                         $(this).data('status', 'off').removeClass('nav-course-open');
                         $('.courses').slideUp('600');
                     }
-                    
                 });
+
+                // 展开todo
+                var todoWrap = $('.main-wrap');
+                var index = -1;
+                this.dom.on('click', '.list-nav-item', function(event) {
+                    event.preventDefault();
+                    var step = 1;
+                    step += $(this).index();
+                    $('.list-nav-item').eq(index).removeClass('list-nav-on');
+                    $(this).addClass('list-nav-on');
+                    index = step-1;
+                    todoWrap.animate({
+                        marginLeft:"-"+step*100+"%"
+                    }, 600);
+                });
+
             },
             initScroll:function(){
                 $('.home-nav,.main').niceScroll({ 
@@ -209,8 +232,116 @@ require(['jquery', 'bootstrap-validator', 'bootstrap','nicescroll'], function($)
                     autohidemode: false //是否隐藏滚动条 
                 });
             },
+            initUserInfo:function(){
+                var userWrap = $('.user-info-wrap');
+                var userShow = $('.show-info');
+                var userEdit = $('.edit-info');
+                var flag = true;
+                var tag = true;
+                this.dom.on('click', '.user', function(event) {
+                    event.preventDefault();
+                    if(flag){
+                        $.ajax({
+                            url: '/get-user',
+                            type: 'GET',
+                            data: {name: username},
+                            success:function(response){
+                                if(response.code != 1){
+                                    alert(response.msg);
+                                    return;
+                                }
+                                $('#info-password').text(response.result.password);
+                                flag = false;
+                            }
+                        })
+                        .done(function() {
+                            console.log("success");
+                        })
+                        .fail(function() {
+                            console.log("error");
+                        });
+                    }
+                    if(tag){
+                        userWrap.removeClass('off');
+                        tag = false;
+                    }else{
+                        tag = true;
+                        userWrap.addClass('off');
+                    }
+                    
+                });
+                this.dom.on('click', '.info-close', function(event) {
+                    event.preventDefault();
+                    userWrap.addClass('off');
+                });
+                this.dom.on('click', '#edit-user', function(event) {
+                    event.preventDefault();
+                    userShow.addClass('off');
+                    userEdit.removeClass('off');
+                });
+                $('#user-form').bootstrapValidator({
+                    message: 'This value is not valid',
+                    feedbackIcons: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields: {
+                        username: {
+                            validators: {
+                                notEmpty: {
+                                    message: '用户名不能为空'
+                                }
+                            }
+                        },
+                        password: {
+                            validators: {
+                                notEmpty: {
+                                    message: '密码不能为空'
+                                },
+                                stringLength: {
+                                    min: 6,
+                                    max: 9,
+                                    message: '密码长度为6~9'
+                                }
+                            }
+                        }
+                    }
+                }).on("success.form.bv", function(e) {
+                    e.preventDefault();
+                    var name = $("#username");
+                    var pas = $("#password");
+                    $.ajax({
+                        url: '/edit-user',
+                        type: 'POST',
+                        data: {
+                            name: name,
+                            password:pas
+                        },
+                        success:function(response){
+                            if(response.code !== 1){
+                                alert(response.msg);
+                                return;
+                            }
+                            $('#info-name').text(response.result.name);
+                            $('#info-password').text(response.result.password);
+                            userShow.removeClass('off');
+                            userEdit.addClass('off');
+                        }
+                    })
+                    .done(function() {
+                        console.log("success");
+                    })
+                    .fail(function() {
+                        console.log("error");
+                    });
+                    
+                });
+            },
             initCourse:function(){
                 var self = this;
+                console.log(username)
+                if(!username) return;
                 $.ajax({
                     url: '/query-course',
                     type: 'get',
@@ -219,11 +350,11 @@ require(['jquery', 'bootstrap-validator', 'bootstrap','nicescroll'], function($)
                     },
                     success:function(response){
                         console.log(response)
+                        var results = [];
                         if(response.code === 1){
-                            self.setCourses(response.result);
-                        }else{
-                            alert(response.msg)
+                            results = response.result;
                         }
+                        self.setCourses(results);
                     },
                     error:function(xhr){
                         console.log(xhr);
@@ -264,13 +395,63 @@ require(['jquery', 'bootstrap-validator', 'bootstrap','nicescroll'], function($)
                 });
             },
             setCourses:function(data){
-                console.log(data);
+                var tabHtml = "";
+                var navHtml = "";
+                var l=data.length;
+                if(l>0){
+                    for(var i=0; i<l; i++){
+                        tabHtml += "<tr><td><h4>"+ data[i].name +"<small class=\"ml-15\">"+ data[i].addr +"</small></h4></td><td><button data-id=\""+ data[i]._id +"\" class=\"btn btn-primary  glyphicon glyphicon-edit\"></button><button data-id=\""+ data[i]._id +"\" class=\"ml-10 btn btn-primary glyphicon glyphicon-remove\"></button></td></tr>";
+                        navHtml += "<li class=\"course-item\" data-id=\""+data[i]._id+"\">"+data[i].name+"</li>";
+                    }
+                }else{
+                    tabHtml = "<tr><td class=\"text-center\">还没有课程，赶快添加吧！</td></tr>"
+                    navHtml = "<li class=\"course-item\">暂未有课程</li>"
+                }
+                $("#table-courses").html(tabHtml);
+                $(".courses").html(navHtml);
             },
             setTodos:function(data){
                 console.log(data);
             },
             createCourse:function(){
-
+                this.dom.on('click', '#btn-course', function(event) {
+                    event.preventDefault();
+                    var name = $("#coursename").val();
+                    if(!username) return;
+                    if(!name){
+                        alert("课程名不能爲空！");
+                        return;
+                    }
+                    var addr = $("#courseaddr").val();
+                    if(!addr){
+                        alert("上课地点不能爲空！");
+                        return;
+                    }
+                    $.ajax({
+                        url: '/create-course',
+                        type: 'POST',
+                        data: {
+                            name:name,
+                            uname:username,
+                            addr:addr
+                        },
+                        success:function(response){
+                            if(response.code === 1){
+                                $('#table-courses').prepend("<tr><td><h4>"+ response.result.name +"<small class=\"ml-15\">"+ response.result.addr +"</small></h4></td><td><button data-id=\""+ response.result._id +"\" class=\"btn btn-primary  glyphicon glyphicon-edit\"></button><button data-id=\""+ response.result._id +"\" class=\"ml-10 btn btn-primary glyphicon glyphicon-remove\"></button></td></tr>");
+                                $("#add-course").click();
+                            }else{
+                                alert(response.msg);
+                            }
+                        }
+                    })
+                    .done(function() {
+                        console.log("success");
+                    })
+                    .fail(function() {
+                        console.log("error");
+                    });
+                    
+                });
             }
         };
 
