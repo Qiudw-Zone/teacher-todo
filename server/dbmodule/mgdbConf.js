@@ -20,6 +20,7 @@ module.exports = {
             name:"courses",
             table:{
                 name:String,
+                uname:String,
                 addr:String,
                 createTime : { type: Date, default: Date.now }
             }
