@@ -120,7 +120,8 @@ exports.editCourse = function(updateInfo,call){
     }
     if(updateInfo.name && updateInfo.content){
         updateCourseModel.data.condit = {
-            name:updateInfo.name
+            name:updateInfo.name,
+            uname:updateInfo.uname
         };
         updateCourseModel.data.update = updateInfo.content;
         if(call && typeof call === "function"){
@@ -134,7 +135,7 @@ exports.editCourse = function(updateInfo,call){
                 call(results);
             }
         }
-        if(updateInfo.content.name && updateInfo.name !== updateInfo.content.name){ // 编辑前后的todo名不一致时作唯一性检测
+        if(updateInfo.content.name && updateInfo.name !== updateInfo.content.name){ // 编辑前后的课程名不一致时作唯一性检测
             this.queryCourse(updateInfo.content.name,function(res){
                 if(res.code === 1){
                     results.msg = "課程名已存在！";
@@ -152,48 +153,30 @@ exports.editCourse = function(updateInfo,call){
 }
 
 // 刪除課程
-var removeCourseModel ={
+var delCourseModel ={
     table:'courses',
-    data:{
-        condit:null,
-        options:{multi:1}
-    },
+    data:{},
     call:function(res){
         console.log(res)
     }
 }
-exports.removeCourse = function(name,call){
+exports.delCourse = function(id,call){
     var results = {
-        code:0,
-        msg:'參數錯誤！'
-    };
-    if(name){
-        this.queryCourse(name,function(res){
-            if(res.code === 1){
-                removeCourseModel.data.condit = {
-                    name:name
+        code:-1,
+        msg:"删除失败！"
+    }
+    if(id){
+        delCourseModel.data.id = id;
+        if(call && typeof call === "function"){
+            delCourseModel.call = function(res){
+                if(res.n === 1){
+                    results.code = 1;
+                    results.msg = "删除成功！";
                 }
-                if(call && typeof call === "function"){
-                    removeCourseModel.call = function(res){
-                        if(res.n){
-                            results.code = 1;
-                            results.msg = "刪除成功！";
-                        }else{
-                            results.code = -1;
-                            results.msg = "刪除失敗！";
-                        }
-                        call(results);
-                    }
-                }
-                mogos.removeDB(removeCourseModel);
-                return;
-            }else{
-                results.code = -1;
-                results.msg = "課程不存在！";
                 call(results);
-                return;
             }
-        });
+        }
+        mogos.removeDBById(delCourseModel);
     }else{
         call(results);
     }

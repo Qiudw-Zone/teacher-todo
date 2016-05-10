@@ -30,7 +30,13 @@ module.exports = {
             table:{
                 name:String,
                 uname:String,
+                cname:String,
                 status:Number, // 根据时间确定状态 -1：已结束, 0：进行中, 1：未开始
+                btime:String,
+                etime:String,
+                ftime:{type:Date,default:''},
+                content:String,
+                view:Boolean,
                 createTime : { type: Date, default: Date.now }
             }
         }

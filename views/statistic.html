@@ -1,1 +1,44 @@
-statistic
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人统计</title>
+
+    <link rel="stylesheet" href="/css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <div class="main">
+        <ul class="static-nav">
+            <li class="static-item static-item-on">执行力</li>
+            <li class="static-item">状态占比</li>
+            <li class="static-item">课程占比</li>
+        </ul>
+        <div class="main-wrap">
+            <div class="container-wrap">
+                <div id="statis-ability" class="statis-container"></div>
+                <div id="statis-status" class="statis-container"></div>
+                <div id="statis-course" class="statis-container"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var require = {
+            baseUrl: './',
+            urlArgs: 'v=1.0.0',
+            waitSeconds: 0,
+            paths: {
+                'jquery': '/js/lib/jquery-1.11.1.min',
+                'nicescroll': '/js/lib/jquery-nicescroll',
+                'bootstrap-validator': '/js/lib/bootstrapValidator.min',
+                'bootstrap': '/js/lib/bootstrap.min',
+                'ckeditor': '/js/lib/ckeditor/ckeditor',
+                'datetimepicker': '/js/lib/bootstrap-datetimepicker.min',
+                'highcharts': '/js/lib/highcharts'
+            }
+        };
+        var username = "{{username}}";
+    </script>
+    <script src="/js/lib/require.min.js" data-main="/js/main.js"></script>
+</body>
+</html>

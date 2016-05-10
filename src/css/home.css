@@ -14,7 +14,6 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font: inherit;
   font-size: 100%;
   vertical-align: baseline;
 }
@@ -23,10 +22,9 @@ html {
   line-height: 1;
 }
 
-ol, ul {
+/* ol, ul {
   list-style: none;
-}
-
+} */
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -364,9 +362,19 @@ body {
   background: #3E3D32;
   border-top: 1px solid #666;
   cursor: pointer;
+  list-style: none;
 }
 .home-body .home-nav .nav-item:hover {
   background: #444442;
+}
+.home-body .home-nav .nav-item a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
+.home-body .home-nav .nav-item a:hover {
+  text-decoration: none;
 }
 .home-body .home-nav .nav-course-close:after {
   content: '';
@@ -401,6 +409,7 @@ body {
   font-size: 16px;
   border-bottom: 1px solid #666;
   cursor: pointer;
+  list-style: none;
 }
 .home-body .home-nav .course-item:hover {
   background: #666;
@@ -421,6 +430,7 @@ body {
   color: #757575;
   border-radius: 10px;
   background: #eee;
+  list-style: none;
 }
 .home-body .list-wrap .list-nav-item {
   float: left;
@@ -497,6 +507,9 @@ body {
   border-bottom: 2px solid #c5c5c5;
   outline: none;
   font-size: 20px;
+}
+.home-body .list-wrap .todos {
+  list-style: none;
 }
 .home-body .list-wrap .todos .todo {
   position: relative;
@@ -576,6 +589,7 @@ body {
   color: #555;
   font-size: 14px;
   border-radius: 5px;
+  cursor: pointer;
 }
 .home-body .list-wrap .paginations .page:hover {
   background: #FF7B28;

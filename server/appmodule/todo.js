@@ -12,6 +12,17 @@ var queryTodos = function(model,call){
             if(res.length){
                 results.code = 1;
                 results.msg = "查询成功！";
+                results.amount = res.length;
+                if(model.condit && model.condit.page && model.condit.size){
+                    results.page = model.condit.page;
+
+                    var skip = model.condit.size*(model.condit.page-1);
+                    res = res.slice(skip);
+                    results.pageSize = Math.ceil(results.amount / model.condit.size);
+                }
+                if(model.condit && model.condit.size){
+                    res = res.slice(0,model.condit.size);
+                }
                 results.result = res;
             }
             call(results);
@@ -19,6 +30,67 @@ var queryTodos = function(model,call){
     }
     
     mogos.findDB(model);
+}
+
+var queryTodoById = function(model,call){
+    var results = {
+        code:-1,
+        msg:'暂无数据！'
+    };
+    if(call && typeof call === "function"){
+        model.call = function(res){
+            results.code = 1;
+            results.msg = "查询成功！";
+            results.result = res;
+            call(results);
+        }
+    }
+    mogos.findById(model);
+}
+
+// 获取一条todo
+var getTodoByIdModel ={
+    table:'todos',
+    data:{
+        id:null
+    },
+    call:function(res){
+        console.log(res);
+    }
+}
+
+exports.getTodoById = function(id,call){
+    if(id){
+        getTodoByIdModel.data.id = id;
+        queryTodoById(getTodoByIdModel,call);
+    }
+}
+
+// get todo查询模型
+var getTodosModel ={
+    table:'todos',
+    data:null,
+    condit:null,
+    call:function(res){
+        console.log(res);
+    }
+}
+
+exports.getTodos = function(data,call){
+    if(data.status && data.page && data.size){
+        getTodosModel.data = {
+            uname: data.uname,
+            status:data.status            
+        }
+        if(data.cname){
+            getTodosModel.data.cname = data.cname;
+        }
+        getTodosModel.condit = {
+            size:data.size,
+            page:data.page
+        }
+        queryTodos(getTodosModel,call);
+    }
 }
 
 // 按todo名字查询
@@ -123,7 +195,6 @@ exports.createTodo = function(data,call){
                 }
             }
             mogos.insertDB(insertToDoModel);
-            
         }
     });
     
@@ -132,7 +203,7 @@ exports.createTodo = function(data,call){
 var updateToDoModel ={
     table:'todos',
     data:{
-        condit:null,
+        id:null,
         update:null,
     },
     call:function(res){
@@ -145,10 +216,12 @@ exports.editTodo = function(updateInfo,call){
         code:-1,
         msg:"信息不完整！"
     }
-    if(updateInfo.name && updateInfo.content){
-        updateToDoModel.data.condit = {
-            name:updateInfo.name
-        };
+
+    if(updateInfo.id && updateInfo.content){
+        updateToDoModel.data.id = updateInfo.id;
+        if(parseInt(updateInfo.content.status) === -1){ // 状态更改
+            updateInfo.content.ftime = Date.now();
+        }
         updateToDoModel.data.update = updateInfo.content;
         if(call && typeof call === "function"){
             updateToDoModel.call = function(res){
@@ -160,22 +233,40 @@ exports.editTodo = function(updateInfo,call){
                 }
                 call(results);
             }
-        }
-        if(updateInfo.content.name && updateInfo.name !== updateInfo.content.name){ // 编辑前后的todo名不一致时作唯一性检测
-            this.queryByName(updateInfo.content.name,function(res){
-                if(res.code === 1){
-                    results.msg = "TODO名已存在！";
-                    call(results);
-                    return;
-                }
-                mogos.updateDB(updateToDoModel);
-            });
-        }else{
-            mogos.updateDB(updateToDoModel);
-        }        
-        
+        }       
+        mogos.updateDBById(updateToDoModel);        
     }else{
         call(results);
     }
 }
 
+var delTodoByIdModel ={
+    table:'todos',
+    data:{
+        id:null
+    },
+    call:function(res){
+        console.log(res);
+    }
+}
+exports.delTodo = function(id,call){
+    var results = {
+        code:-1,
+        msg:"删除失败！"
+    }
+    if(id){
+        delTodoByIdModel.data.id = id;
+        if(call && typeof call === "function"){
+            delTodoByIdModel.call = function(res){
+                if(res.n === 1){
+                    results.code = 1;
+                    results.msg = "删除成功！";
+                }
+                call(results);
+            }
+        }
+        mogos.removeDBById(delTodoByIdModel);
+    }else{
+        call(results);
+    }
+}

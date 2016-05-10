@@ -14,7 +14,6 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font: inherit;
   font-size: 100%;
   vertical-align: baseline;
 }
@@ -23,10 +22,9 @@ html {
   line-height: 1;
 }
 
-ol, ul {
+/* ol, ul {
   list-style: none;
-}
-
+} */
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -286,25 +284,102 @@ body {
   width: 30px;
   height: 30px;
 }
-.create-container .content-group {
+
+.content-group {
+  width: 960px;
+  height: 35px;
+  margin: 15px auto;
+  font-size: 14px;
+  line-height: 35px;
+}
+
+.pop-content-group {
   width: 100%;
   height: 35px;
   margin: 15px auto;
   font-size: 14px;
   line-height: 35px;
 }
-.create-container .content-label {
+
+.ope-group {
+  width: 100%;
+  height: 55px;
+  margin: 15px auto;
+  font-size: 14px;
+  line-height: 55px;
+}
+
+.todo-status {
+  color: #E82916;
+  font-weight: bold;
+}
+
+.content-label {
   height: 35px;
   text-align: right;
   font-weight: bold;
   color: #4F9F2E;
 }
-.create-container .content-text {
+
+.content-text {
   padding: 0px 10px;
+  word-wrap: break-word;
 }
-.create-container .content-main-wrap {
+
+.content-main-wrap {
   height: auto;
 }
-.create-container .content-main {
+
+.content-main {
   overflow: hidden;
+  padding-left: 15px;
+}
+
+.main {
+  width: 100%;
+  height: auto;
+}
+.main .static-nav {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 100px;
+  width: 120px;
+  height: auto;
+  font-size: 18px;
+  background: #7cb5ec;
+}
+.main .static-item {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+  border-bottom: 1px solid #B0D0EB;
+  cursor: pointer;
+  list-style: none;
+}
+.main .static-item:hover {
+  font-weight: bold;
+  background: #FDBC6E;
+}
+.main .static-item-on {
+  font-weight: bold;
+  background: #FDBC6E;
+}
+
+.main-wrap {
+  width: 100%;
+  height: 500px;
+  margin: 50px auto 0;
+  overflow: hidden;
+}
+.main-wrap .container-wrap {
+  width: 300%;
+  height: 100%;
+}
+.main-wrap .statis-container {
+  float: left;
+  width: 33.3%;
+  height: 100%;
 }

@@ -79,6 +79,11 @@ exports.findDB = function(req) {
             createTime:-1 // 按创建时间降序
         }
     }
+    /*if(!req.condit){
+    	req.condit = {};
+    	req.condit.limit = 0;
+    	req.condit.skip = 0;
+    }*/
 	Model.find(req.data, function(e, res) {
 		if (e) {
 			console.log(e);
@@ -114,6 +119,21 @@ exports.findOneDB = function(req) {
 	})
 }
 
+// 通过id查询
+exports.findById = function(req) {
+	var Model = Models[req.table];
+	Model.findById(req.data.id, function (e, res) {
+		if (e) {
+			console.log(e);
+			return;
+		}
+		console.log('查询成功！');
+		if(req.call){
+			req.call(res);
+		}
+	})
+}
+
 /**
  * 更新数据库信息
  * @param  {JSON} req:{
@@ -128,7 +148,6 @@ exports.findOneDB = function(req) {
  */
 exports.updateDB = function(req) {
 	var Model = Models[req.table];
-
 	Model.update(req.data.condit,req.data.update,req.data.options, function(e, res) {
 		if (e) {
 			console.log(e);
@@ -139,6 +158,27 @@ exports.updateDB = function(req) {
 			req.call(res);
 		}
 	})
+}
+
+exports.updateDBById = function(req) {
+	var Model = Models[req.table];
+
+	Model.findById(req.data.id,function(err,response){
+		if (err) {
+			console.log(err);
+			return;
+		}
+		Model.update({_id:mongoose.Types.ObjectId(response._id)},req.data.update,req.data.options, function(e, res) {
+			if (e) {
+				console.log(e);
+				return;
+			}
+			console.log("影响数量 " + res.n);
+			if(req.call){
+				req.call(res);
+			}
+		})
+	});
 }
 
 /**
@@ -164,5 +204,21 @@ exports.removeDB = function(req) {
 		if(req.call){
 			req.call(res.result);
 		}
+	})
+}
+
+exports.removeDBById = function(req) {
+	var Model = Models[req.table];
+	Model.findById(req.data.id,function(err,response){
+		Model.remove({_id:mongoose.Types.ObjectId(response._id)},function(e,res) {
+			if (e) {
+				console.log(e);
+				return;
+			}
+			console.log("删除数量："+res.result.n);
+			if(req.call){
+				req.call(res.result);
+			}
+		})
 	})
 }

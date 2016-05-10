@@ -131,25 +131,84 @@ body{
     .close{
         @include size(30px,30px);
     }
-    .content-group{
-        @include size(100%,35px);
-        margin:15px auto;
-        font-size: 14px;
-        line-height: 35px;
+}
+.content-group{
+    @include size(960px,35px);
+    margin:15px auto;
+    font-size: 14px;
+    line-height: 35px;
+}
+.pop-content-group{
+    @include size(100%,35px);
+    margin:15px auto;
+    font-size: 14px;
+    line-height: 35px;
+}
+.ope-group{
+    @include size(100%,55px);
+    margin:15px auto;
+    font-size: 14px;
+    line-height: 55px;
+}
+.todo-status{
+    color:#E82916;
+    font-weight: bold;
+}
+.content-label{
+    height: 35px;
+    text-align: right;
+    font-weight: bold;
+    color:#4F9F2E;
+}
+.content-text{
+    padding: 0px 10px;
+    word-wrap: break-word;
+}
+.content-main-wrap{
+    height: auto;
+}
+.content-main{
+    overflow: hidden;
+    padding-left: 15px;
+}
+.main{
+    @include size(100%,auto);
+    .static-nav{
+        position: fixed;
+        z-index: 10;
+        left:0;
+        top:100px;
+        @include size(120px,auto);
+        font-size: 18px;
+        @include bg(rgb(124, 181, 236));
     }
-    .content-label{
-        height: 35px;
-        text-align: right;
+    .static-item{
+        @include size(100%,40px);
+        line-height: 40px;
+        text-align: center;
+        color: #fff;
+        border-bottom: 1px solid #B0D0EB;
+        cursor: pointer;
+        list-style: none;
+        &:hover{
+            font-weight: bold;
+            @include bg(#FDBC6E);
+        }
+    }
+    .static-item-on{
         font-weight: bold;
-        color:#4F9F2E;
+        @include bg(#FDBC6E);
     }
-    .content-text{
-        padding: 0px 10px;
+}
+.main-wrap{
+    @include size(100%,500px);
+    margin:50px auto 0;
+    overflow: hidden;;
+    .container-wrap{
+        @include size(300%,100%);
     }
-    .content-main-wrap{
-        height: auto;
-    }
-    .content-main{
-        overflow: hidden;
+    .statis-container{
+        float: left;
+        @include size(33.3%,100%);
     }
 }

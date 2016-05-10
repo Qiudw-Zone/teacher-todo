@@ -14,7 +14,6 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font: inherit;
   font-size: 100%;
   vertical-align: baseline;
 }
@@ -23,10 +22,9 @@ html {
   line-height: 1;
 }
 
-ol, ul {
+/* ol, ul {
   list-style: none;
-}
-
+} */
 table {
   border-collapse: collapse;
   border-spacing: 0;

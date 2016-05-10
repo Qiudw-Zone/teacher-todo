@@ -1,1 +1,72 @@
-todo detail
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo详情</title>
+
+    <link rel="stylesheet" href="/css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/js/lib/ckeditor/contents.css">
+</head>
+<body>
+    <div class="main">
+        <div class="page-header text-center">
+            <h3 class="prev-title">{{result.name}}<small class="ml-15">{{result.createTime}}</small></h3>
+        </div>
+        <div class="ope-group">
+            <div class="col-sm-6">
+                <a href="/home" class="ml-30 btn btn-info">返回首页</a>
+                <span class="ml-30">TODO状态：</span>
+                <span class="todo-status ml-10"></span>
+            </div>
+            <div class="col-sm-6 text-right">
+                <a id="btn-edit" data-id="{{result._id}}" data-status="-2" class="mr-30 btn btn-primary btn-detail">编辑</a>
+                <button id="btn-doit" data-id="{{result._id}}" data-status="0" class="mr-30 btn btn-primary btn-detail">现在处理</button><button id="btn-done" data-id="{{result._id}}" data-status="-1" class="mr-30 btn btn-primary btn-detail">标记完成</button>
+            </div>
+        </div>
+        <div class="content-group">
+            <label for="" class="content-label col-sm-2">所属课程：</label>
+            <div class="col-sm-10">
+                <p class="content-text prev-course">{{result.cname}}</p>
+            </div>
+        </div>
+        <div class="content-group">
+            <label for="" class="content-label col-sm-2">开始时间：</label>
+            <div class="col-sm-10">
+                <p class="content-text prev-btime">{{result.btime}}</p>
+            </div>
+        </div>
+        <div class="content-group">
+            <label for="" class="content-label col-sm-2">结束时间：</label>
+            <div class="col-sm-10">
+                <p class="content-text prev-etime">{{result.etime}}</p>
+            </div>
+        </div>
+        <div class="content-group content-main-wrap">
+            <label for="" class="content-label col-sm-2">TODO正文：</label>
+            <div class="content-main">
+                <div id="todo-content" class="content-text prev-text"></div>
+            </div>
+        </div>
+        <div id="todo-content-off" class="off">{{result.content}}</div>
+    <script>
+        var require = {
+            baseUrl: './',
+            urlArgs: 'v=1.0.0',
+            waitSeconds: 0,
+            paths: {
+                'jquery': '/js/lib/jquery-1.11.1.min',
+                'nicescroll': '/js/lib/jquery-nicescroll',
+                'bootstrap-validator': '/js/lib/bootstrapValidator.min',
+                'bootstrap': '/js/lib/bootstrap.min',
+                'ckeditor': '/js/lib/ckeditor/ckeditor',
+                'datetimepicker': '/js/lib/bootstrap-datetimepicker.min',
+                'highcharts': '/js/lib/highcharts'
+            }
+        };
+        var username = "{{username}}";
+        var todoStatus = "{{result.status}}";
+    </script>
+    <script src="/js/lib/require.min.js" data-main="/js/main.js"></script>
+</body>
+</html>

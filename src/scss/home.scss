@@ -203,8 +203,17 @@ body{
             @include bg(#3E3D32);
             border-top:1px solid #666;
             cursor: pointer;
+            list-style: none;
             &:hover{
                 @include bg(#444442);
+            }
+            a{
+                display: block;
+                @include size(100%,100%);
+                color: #fff;
+                &:hover{
+                    text-decoration: none;
+                }
             }
         }
         .nav-course-close{
@@ -242,6 +251,7 @@ body{
             font-size: 16px;
             border-bottom: 1px solid #666;
             cursor: pointer;
+            list-style: none;
             &:hover{
                 @include bg(#666);
             }
@@ -262,6 +272,7 @@ body{
             color:#757575;
             border-radius: 10px;
             @include bg(#eee);
+            list-style: none;
         }
         .list-nav-item{
             float: left;
@@ -334,6 +345,7 @@ body{
             }
         }
         .todos{
+            list-style: none;
             .todo{
                 position: relative;
                 @include size(100%,45px);
@@ -407,6 +419,7 @@ body{
                 color: #555;
                 font-size: 14px;
                 border-radius: 5px;
+                cursor: pointer;;
                 &:hover{
                     @include bg(#FF7B28);
                     color:#fff;

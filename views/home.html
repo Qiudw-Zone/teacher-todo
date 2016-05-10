@@ -64,6 +64,7 @@
                             </div>
                         </div>
                         <p class="btn-wrap">
+                            <button id="edit-cancle" type="button" class="mr-30 edit-user btn btn-info">取消</button>
                             <button id="sub-edit" type="submit" class="edit-user btn btn-info">提交</button>
                         </p>
                     </form>
@@ -75,18 +76,18 @@
             <div class="home-nav">
                 <p class="create-task"><i class="plug-task icon-setting"></i><span class="nav-text">课程管理</span></p>
                 <ul class="nav-todo">
-                    <li class="nav-item"><i class="nav-icon icon-tasks"></i><span class="nav-text">我的任务</span></li>
+                    <li id="my-tasks" class="nav-item"><i class="nav-icon icon-tasks"></i><span class="nav-text">我的任务</span></li>
                     <li id="nav-course" class="nav-item nav-course-close" data-status="off"><i class="nav-icon icon-courses"></i><span class="nav-text">我的课程</span></li>
                     <ul class="courses" style="display:none;">
                     </ul>
-                    <li class="nav-item"><i class="nav-icon icon-stastic"></i><span class="nav-text">个人统计</span></li>
+                    <li class="nav-item"><a href="/statistic"><i class="nav-icon icon-stastic"></i><span class="nav-text">个人统计</span></a></li>
                 </ul>
             </div>
             <div class="list-wrap">
                 <ul class="lists-nav">
-                    <li class="list-nav-item">进行中</li>
-                    <li class="list-nav-item">已终止</li>
-                    <li class="list-nav-item">待完成</li>
+                    <li data-type="0" data-id="doing" class="list-nav-item">进行中</li>
+                    <li data-type="-1" data-id="finished" class="list-nav-item">已终止</li>
+                    <li data-type="1" data-id="coming" class="list-nav-item">待完成</li>
                 </ul>
                 <div class="list-main">
                     <div class="main-wrap">
@@ -97,22 +98,8 @@
                             </div>
                         </div>
                         <div class="main">
-                            <ul class="todos">
-                                <li class="todo">
-                                    <p class="todo-info">
-                                        <i class="todo-new icon-new"></i>
-                                        <a class="todo-name" href="">周一课程计划</a>
-                                        <span class="todo-times">2106/1/1 9:00 - 2016/1/2 18:00</span>
-                                        <span class="todo-time">2016/4/12</span>
-                                    </p>
-                                    <p class="todo-operate">
-                                        <button class="btn btn-success glyphicon glyphicon-ok"></button>
-                                        <button class="btn btn-warning glyphicon glyphicon-remove"></button>
-                                        <!-- <i class="operate-icon icon-remove" title="删除"></i> -->
-                                        <!-- <i class="operate-icon icon-finish" title="结束"></i> -->
-                                    </p>
-                                </li>
-                                <li class="todo">
+                            <ul id="doing" class="todos">
+                                <!-- <li class="todo">
                                     <p class="todo-info">
                                         <i class="todo-new icon-new"></i>
                                         <a class="todo-name" href="">周一课程计划</a>
@@ -123,68 +110,28 @@
                                         <button class="btn btn-success glyphicon glyphicon-ok"></button>
                                         <button class="btn btn-warning glyphicon glyphicon-remove"></button>
                                     </p>
-                                </li>
-                                <li class="todo">
-                                    <p class="todo-info">
-                                        <a href="" class="todo-name">周一课程计划</a>
-                                        <span class="todo-times">2106/1/1 9:00 - 2016/1/2 18:00</span>
-                                        <span class="todo-time">2016/4/12</span>
-                                    </p>
-                                    <p class="todo-operate">
-                                       <button class="btn btn-success glyphicon glyphicon-ok"></button>
-                                        <button class="btn btn-warning glyphicon glyphicon-remove"></button>
-                                    </p>
-                                </li>
+                                </li> -->
                             </ul>
-                            <p class="paginations">
-                                <a href="" class="prev page">上一页</a>
-                                <a href="" class="page cur">1</a>
-                                <a href="" class="page">2</a>
-                                <a href="" class="page">3</a>
-                                <a href="" class="page">4</a>
-                                <a href="" class="page">5</a>
-                                <a href="" class="page">下一页</a>
+                            <p id="page-doing" class="paginations">
                             </p>
                         </div>
                         <div class="main">
-                            <ul class="todos">
-                                <li class="todo">
+                            <ul id="finished" class="todos">
+                                <!-- <li class="todo">
                                     <p class="todo-info finished">
                                         <i class="todo-new icon-new"></i>
                                         <a class="todo-name" href="">周一课程计划</a>
                                         <span>2106/1/1 9:00 - 2016/1/2 18:00</span>
                                         <span class="todo-time">2016/4/12</span>
                                     </p>
-                                </li>
-                                <li class="todo">
-                                    <p class="todo-info finished">
-                                        <i class="todo-new icon-new"></i>
-                                        <a class="todo-name" href="">周一课程计划</a>
-                                        <span>2106/1/1 9:00 - 2016/1/2 18:00</span>
-                                        <span class="todo-time">2016/4/12</span>
-                                    </p>
-                                </li>
-                                <li class="todo">
-                                    <p class="todo-info finished">
-                                        <a href="" class="todo-name">周一课程计划</a>
-                                        <span>2106/1/1 9:00 - 2016/1/2 18:00</span>
-                                        <span class="todo-time">2016/4/12</span>
-                                    </p>
-                                </li>
+                                </li> -->
                             </ul>
-                            <p class="paginations">
-                                <a href="" class="prev page">上一页</a>
-                                <a href="" class="page cur">1</a>
-                                <a href="" class="page">2</a>
-                                <a href="" class="page">3</a>
-                                <a href="" class="page">4</a>
-                                <a href="" class="page">5</a>
-                                <a href="" class="page">下一页</a>
+                            <p id="page-finished" class="paginations">
                             </p>
                         </div>
                         <div class="main">
-                            <ul class="todos">
-                                <li class="todo">
+                            <ul id="coming" class="todos">
+                                <!-- <li class="todo">
                                     <p class="todo-info">
                                         <i class="todo-new icon-new"></i>
                                         <a class="todo-name" href="">周一课程计划</a>
@@ -194,37 +141,16 @@
                                     <p class="todo-operate">
                                         <button class="btn btn-warning glyphicon glyphicon-remove"></button>
                                     </p>
-                                </li>
-                                <li class="todo">
-                                    <p class="todo-info">
-                                        <i class="todo-new icon-new"></i>
-                                        <a class="todo-name" href="">周一课程计划</a>
-                                        <span class="todo-times">2106/1/1 9:00 - 2016/1/2 18:00</span>
-                                        <span class="todo-time">2016/4/12</span>
-                                    </p>
-                                    <p class="todo-operate">
-                                        <button class="btn btn-warning glyphicon glyphicon-remove"></button>
-                                    </p>
-                                </li>
-                                <li class="todo">
-                                    <p class="todo-info">
-                                        <a href="" class="todo-name">周一课程计划</a>
-                                        <span class="todo-times">2106/1/1 9:00 - 2016/1/2 18:00</span>
-                                        <span class="todo-time">2016/4/12</span>
-                                    </p>
-                                    <p class="todo-operate">
-                                        <button class="btn btn-warning glyphicon glyphicon-remove"></button>
-                                    </p>
-                                </li>
+                                </li> -->
                             </ul>
-                            <p class="paginations">
-                                <a href="" class="prev page">上一页</a>
+                            <p id="page-coming" class="paginations">
+                                <!-- <a href="" class="prev page">上一页</a>
                                 <a href="" class="page cur">1</a>
                                 <a href="" class="page">2</a>
                                 <a href="" class="page">3</a>
                                 <a href="" class="page">4</a>
                                 <a href="" class="page">5</a>
-                                <a href="" class="page">下一页</a>
+                                <a href="" class="page">下一页</a> -->
                             </p>
                         </div>
                     </div>
@@ -273,14 +199,16 @@
         urlArgs: 'v=1.0.0',
         waitSeconds: 0,
         paths: {
-        jquery: '/js/lib/jquery-1.11.1.min',
-        nicescroll: '/js/lib/jquery-nicescroll',
+        'jquery': '/js/lib/jquery-1.11.1.min',
+        'nicescroll': '/js/lib/jquery-nicescroll',
         'bootstrap': '/js/lib/bootstrap.min',
-        'bootstrap-validator': '/js/lib/bootstrapValidator.min'
+        'ckeditor': '/js/lib/ckeditor/ckeditor',
+        'bootstrap-validator': '/js/lib/bootstrapValidator.min',
+        'datetimepicker': '/js/lib/bootstrap-datetimepicker.min',
+        'highcharts': '/js/lib/highcharts'
         }
         };
         var username = "{{username}}";
-        console.log(username)
         </script>
         <script src="/js/lib/require.min.js" data-main="/js/main.js"></script>
     </body>
