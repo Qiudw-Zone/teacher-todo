@@ -17,7 +17,7 @@ app.set('view engine', 'html');
 // 运行hbs模块
 app.engine('html', hbs.__express);
 // use方法用于执行中间件  设置静态文件目录为src
-app.use(express.static(path.join(__dirname, 'src')));
+app.use(express.static(path.join(__dirname, 'dist')));
 app.use(bodyParser());
 
 app.get('/', function(req, res) {

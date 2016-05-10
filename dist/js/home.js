@@ -1,1 +1,1 @@
-require(["jquery","bootstrap-validator"],function(o){o(function(){console.log(11)})});
+require(["jquery","nicescroll","bootstrap-validator"],function(r){var o={init:function(){this.initScroll()},initScroll:function(){r(".home-nav,.main").niceScroll({cursorcolor:"#ccc",cursoropacitymax:1,touchbehavior:!1,cursorwidth:"5px",cursorborder:"0",cursorborderradius:"5px",autohidemode:!1})}};o.init()});
