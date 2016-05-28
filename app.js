@@ -17,7 +17,7 @@ app.set('view engine', 'html');
 // 运行hbs模块
 app.engine('html', hbs.__express);
 // use方法用于执行中间件  设置静态文件目录为src
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'src')));
 app.use(bodyParser());
 
 app.get('/', function(req, res) {
@@ -48,6 +48,11 @@ app.post('/login', function(req, res) {
         }
         res.send(response);
     });
+});
+
+app.get('/logout', function(req, res) {
+    username = null;
+    res.sendfile('./index.html');
 });
 
 // 查詢用户信息
@@ -143,9 +148,9 @@ app.get('/query-todo-status', function(req, res) {
     });
 });
 
-app.get('/search-todo', function(req, res) {
-    todo.searchTodo('todo',function(response){
-        console.log(response);
+app.post('/search-todo', function(req, res) {
+    todo.searchTodo(req.body,function(response){
+        res.send(response);
     });
 });
 

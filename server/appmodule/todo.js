@@ -153,13 +153,19 @@ var searchTodoModel ={
     data:{
         name:null
     },
+    condit:null,
     call:function(res){
         console.log(res);
     }
 }
-exports.searchTodo = function(name,call){
-    var regx = new RegExp(name);
+exports.searchTodo = function(data,call){
+    var regx = new RegExp(data.keyword);
     searchTodoModel.data.name = regx;
+    searchTodoModel.data.uname = data.uname;
+    searchTodoModel.condit = {
+        size:data.size,
+        page:data.page
+    }
     queryTodos(searchTodoModel,call);
 
 }

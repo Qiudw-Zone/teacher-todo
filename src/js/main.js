@@ -182,6 +182,8 @@ require(['jquery', 'highcharts', 'bootstrap-validator', 'bootstrap','nicescroll'
                 this.viewTodosInCourse();
 
                 this.initPaginate();
+
+                this.search();
             },
             initPage:function(){
                 var courseWrap = $(".course-wrap");
@@ -453,6 +455,10 @@ require(['jquery', 'highcharts', 'bootstrap-validator', 'bootstrap','nicescroll'
                     event.preventDefault();
                     var page = $(this).data('page');
                     if(page<=0 || page>todoConf.pages) return;
+                    if($(this).data('type') === 's'){ // search
+                        self.doSearch(page);
+                        return;
+                    }
                     $.ajax({
                         url: 'get-todos',
                         type: 'get',
@@ -475,9 +481,6 @@ require(['jquery', 'highcharts', 'bootstrap-validator', 'bootstrap','nicescroll'
                     })
                     .fail(function() {
                         console.log("error");
-                    })
-                    .always(function() {
-                        console.log("complete");
                     });
                     
                 });
@@ -705,7 +708,7 @@ require(['jquery', 'highcharts', 'bootstrap-validator', 'bootstrap','nicescroll'
                 $("#table-courses").html(tabHtml);
                 $(".courses").html(navHtml);
             },
-            setTodos:function(id,res){
+            setTodos:function(id,res,type){
                 var data  =res.result;
                 var l = data? data.length:0;
                 var html = "";
@@ -730,9 +733,9 @@ require(['jquery', 'highcharts', 'bootstrap-validator', 'bootstrap','nicescroll'
                     page = "<span data-page=\""+(parseInt(res.page)-1)+"\" class=\"prev page\">上一页</span>";
                     for(var i=1; i <= res.pageSize; i++){
                         if(i === parseInt(res.page)){
-                            page += "<span data-page=\""+i+"\" class=\"page cur\">"+i+"</span>";
+                            page += "<span data-type=\""+type+"\" data-page=\""+i+"\" class=\"page cur\">"+i+"</span>";
                         }else{
-                            page += "<span data-page=\""+i+"\" class=\"page\">"+i+"</span>";
+                            page += "<span data-type=\""+type+"\" data-page=\""+i+"\" class=\"page\">"+i+"</span>";
                         }
                     }
                     page += "<span data-page=\""+(parseInt(res.page)+1)+"\" class=\"next page\">下一页</span>";
@@ -810,6 +813,40 @@ require(['jquery', 'highcharts', 'bootstrap-validator', 'bootstrap','nicescroll'
                             console.log("error");
                         });
                     }
+                });
+            },
+            search:function(){
+                var self = this;
+                this.dom.on('click', '.search-label', function(event) {
+                    event.preventDefault();
+                    self.doSearch(1);
+                });
+            },
+            doSearch:function(page){
+                $.ajax({
+                    url: '/search-todo',
+                    type: 'post',
+                    data: {
+                        uname:username,
+                        keyword: $('#search').val(),
+                        page:page,
+                        size:todoConf.pageSize
+                    },
+                    success:function(response){
+                        console.log(response)
+                        if(response.code === 1){
+                            homeElem.setTodos('doing',response,'s');
+                            $('.main-wrap').animate({marginLeft: '-100%'},600);
+                        }else{
+                            alert(response.msg);
+                        }
+                    }
+                })
+                .done(function() {
+                    console.log("success");
+                })
+                .fail(function() {
+                    console.log("error");
                 });
             }
         };
